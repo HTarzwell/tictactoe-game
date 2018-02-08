@@ -1,6 +1,8 @@
 // first attempt at game board creation
 
-const gameBoard = ['X', '', 'O', '', '', '', 'X', '', ''] // DON'T NEST YOUR ARRAYS
+const gameBoard = ['', '', '', '', '', '', '', '', ''] // DON'T NEST YOUR ARRAYS
+
+// create emptyBoard function to make gameBoard into an empty array--map??
 
 const gameBoardSquares = function (event) {
   console.log('Im inside gameBoardSquares and gameBoard is', gameBoard)
@@ -9,12 +11,30 @@ const gameBoardSquares = function (event) {
   }
 }
 
-const checkIfNull = function (array) {
-  let i = gameBoard[0]
-  if (i !== 'undefined') {
-    console.log
+const makeMove = function (index, token) {
+  gameBoard[index] = token
+}
+
+const checkIfUndefined = function (index) {
+  if (gameBoard[index] !== '') {
+    return 'Choose another square'
+  } else {
+    return 'this one is fine'
   }
 }
+
+const emptyBoard = function (array) {
+  for (let i = array[i]; i <= array.length; i++) {
+    array.map(array[i] = '')
+  }
+}
+
+// makeMove puts a value in an array position
+// var currentPlayer
+// function switchPlayer
+
+// function takes an array position and determines whether it has a value of undefined
+// checkIfUndefined(2)
 
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
 // problems: 4.1: function has to be a function
