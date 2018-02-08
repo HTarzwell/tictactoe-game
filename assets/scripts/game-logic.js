@@ -24,8 +24,8 @@ const checkIfUndefined = function (index) {
 }
 
 const emptyBoard = function (array) {
-  for (let i = array[i]; i <= array.length; i++) {
-    array.map(array[i] = '')
+  for (let i = 0; i < array.length; i++) {
+    array[i] = ''
   }
 }
 
