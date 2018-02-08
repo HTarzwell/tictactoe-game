@@ -23,11 +23,7 @@ const checkIfUndefined = function (index) {
   }
 }
 
-const emptyBoard = function (array) {
-  for (let i = 0; i < array.length; i++) {
-    array[i] = ''
-  }
-}
+const emptyBoard = new Array(9).fill('')
 
 // makeMove puts a value in an array position
 // var currentPlayer
