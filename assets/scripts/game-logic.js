@@ -6,9 +6,11 @@ const gameBoard = [
 
 // problems: 1: getting the array to be accessible (it's just empty slots right now)
 
-gameBoard.forEach(function (element) {
-  console.log(element)
-})
+const gameBoardSquares = function (gameBoard) {
+  for (let i = gameBoard[0]; i < gameBoard.length; i++) {
+    console.log(gameBoard[i])
+  }
+}
 
 // problems: 1.5: making the array accessible to the DOM (it's just sitting there right now)
 // problems: 2: writing a function that iterates over the array
@@ -19,5 +21,6 @@ gameBoard.forEach(function (element) {
 
 // export game board
 module.exports = {
-  gameBoard
+  gameBoard,
+  gameBoardSquares
 }
