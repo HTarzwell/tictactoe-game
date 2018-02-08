@@ -2,7 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const gameBoard = require('./game-logic')
+const gameLogic = require('./game-logic')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -15,5 +15,6 @@ $(() => {
 // require('./example')
 
 $(() => {
-  $('#game-board').on('submit', gameBoard.gameBoardSquares)
+  console.log('gameBoard is', gameLogic.gameBoard)
+  $('#game-board').on('click', gameLogic.gameBoardSquares)
 })
