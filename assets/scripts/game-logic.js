@@ -43,16 +43,16 @@ const emptyBoard = function () {
 }
 
 // create emptyBoard function to make gameBoard into an empty array
-const winConditions = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [6, 4, 2]
-]
+const winConditions = {
+  winOne: [0, 1, 2],
+  winTwo: [3, 4, 5],
+  winThree: [6, 7, 8],
+  winFour: [0, 3, 6],
+  winFive: [1, 4, 7],
+  winSix: [2, 5, 8],
+  winSeven: [0, 4, 8],
+  winEight: [6, 4, 2]
+}
 
 const indexOfX = []
 
@@ -66,20 +66,6 @@ const compareBoardPushIndex = function (board) {
       indexOfO.push(i)
     }
   }
-}
-
-const compareIndexes = function (array) {
-  for (let i = 0; i < array.length; i++) {
-    console.log(array[i]) //put a pin in this!
-  }
-}
-
-const checkWinConditionX = function () {
-  winConditions.every(compareIndexes(indexOfX))
-}
-
-const checkWinConditionO = function () {
-  winConditions.every(compareIndexes(indexOfO))
 }
 
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
