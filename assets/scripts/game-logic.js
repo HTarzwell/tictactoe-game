@@ -43,44 +43,23 @@ const emptyBoard = function () {
 }
 
 // create emptyBoard function to make gameBoard into an empty array
-
-/** winConditions: token check for following:
-  x === gameBoard[0, 1, 2]
-  x === gameBoard[3, 4, 5]
-  x === gameBoard[6, 7, 8]
-  x === gameBoard[0, 3, 6]
-  x === gameBoard[1, 4, 7]
-  x === gameBoard[2, 5, 8]
-  x === gameBoard[0, 4, 8]
-  x === gameBoard[6, 4, 2]
-**/
-
-const winConditionsForX = [
-  ['x', 'x', 'x', '', '', '', '', '', ''],
-  ['', '', '', 'x', 'x', 'x', '', '', ''],
-  ['', '', '', '', '', '', 'x', 'x', 'x'],
-  ['x', '', '', 'x', '', '', 'x', '', ''],
-  ['', 'x', '', '', 'x', '', '', 'x', ''],
-  ['', '', 'x', '', '', 'x', '', '', 'x'],
-  ['x', '', '', '', 'x', '', '', '', 'x'],
-  ['', '', 'x', '', 'x', '', 'x', '', '']
+const winConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2]
 ]
 
-const winConditionsForO = [
-  ['o', 'o', 'o', '', '', '', '', '', ''],
-  ['', '', '', 'o', 'o', 'o', '', '', ''],
-  ['', '', '', '', '', '', 'o', 'o', 'o'],
-  ['o', '', '', 'o', '', '', 'o', '', ''],
-  ['', 'o', '', '', 'o', '', '', 'o', ''],
-  ['', '', 'o', '', '', 'o', '', '', 'o'],
-  ['o', '', '', '', 'o', '', '', '', 'o'],
-  ['', '', 'o', '', 'o', '', 'o', '', '']
-]
+const checkGameBoard = function () {
+  return gameBoard
+}
 
-const checkWinConditions = function (array) {
-  if (array === winConditionsForX.winOne) {
-    return 'Player X Wins!'
-  }
+const checkWinConditions = function () {
+
 }
 
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
@@ -91,7 +70,7 @@ const checkWinConditions = function (array) {
 // problems: 4.5: function has to prevent makeMove if element !=== undefined
 
 // problems: 6: writing a function that tracks and determines a win condition (three in a row vertical, horizonal, diagonal)
-
+// WIN CONDITION IS A BOOLEAN
 // export game board
 module.exports = {
   gameBoard,
@@ -100,7 +79,9 @@ module.exports = {
   makeMove,
   checkIfUndefined,
   currentPlayer,
-  switchPlayer
+  switchPlayer,
+  winConditions,
+  checkGameBoard
 }
 
 // SETTINGS: CHANGE PASSWORD & LOG OUT -- MORE USER STORIES
