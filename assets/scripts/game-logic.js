@@ -54,13 +54,21 @@ const winConditions = [
   [6, 4, 2]
 ]
 
-const checkGameBoard = function () {
-  return gameBoard
+const indexOfX = []
+
+const indexOfO = []
+
+const compareBoardPushIndex = function (board) {
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === 'x') {
+      indexOfX.push(i)
+    } else if (board[i] === 'o') {
+      indexOfO.push(i)
+    }
+  }
 }
 
-const checkWinConditions = function () {
 
-}
 
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
 // problems: 4.1: function has to be a function
@@ -80,8 +88,7 @@ module.exports = {
   checkIfUndefined,
   currentPlayer,
   switchPlayer,
-  winConditions,
-  checkGameBoard
+  winConditions
 }
 
 // SETTINGS: CHANGE PASSWORD & LOG OUT -- MORE USER STORIES
