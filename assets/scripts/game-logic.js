@@ -68,7 +68,19 @@ const compareBoardPushIndex = function (board) {
   }
 }
 
+const compareIndexes = function (array) {
+  for (let i = 0; i < array.length; i++) {
+    console.log(array[i]) //put a pin in this!
+  }
+}
 
+const checkWinConditionX = function () {
+  winConditions.every(compareIndexes(indexOfX))
+}
+
+const checkWinConditionO = function () {
+  winConditions.every(compareIndexes(indexOfO))
+}
 
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
 // problems: 4.1: function has to be a function
