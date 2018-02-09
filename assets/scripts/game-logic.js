@@ -13,19 +13,15 @@ const gameBoardSquares = function (event) {
   }
 }
 
-const checkIfUndefined = function (index) {
-  if (gameBoard[index] === '') {
-    return 'this square is fine'
-  } else {
-    return 'choose another square'
-  }
-}
-
 // function takes an array position and determines whether it has a value of undefined
 // checkIfUndefined(2)
 
-const makeMove = function (index, token) {
-  gameBoard[index] = token
+const makeMove = function (index) {
+  if (gameBoard[index] === '') {
+    gameBoard[index] = currentPlayer.token
+  } else {
+    return 'choose another square'
+  }
 }
 // makeMove puts a value in an array position
 
@@ -68,49 +64,6 @@ const compareBoardPushIndex = function (board) {
   }
 }
 
-const compareIndexOfXToWins = function () {
-  for (let i = 0; i <= indexOfX.length; i++) {
-    if (indexOfX === winConditions.winOne) {
-      return 'X Wins!' // + true?
-    } else if (indexOfX === winConditions.winTwo) {
-      return 'X Wins!'
-    } else if (indexOfX === winConditions.winThree) {
-      return 'X Wins!'
-    } else if (indexOfX === winConditions.winFour) {
-      return 'X Wins!'
-    } else if (indexOfX === winConditions.winFive) {
-      return 'X Wins!'
-    } else if (indexOfX === winConditions.winSix) {
-      return 'X Wins!'
-    } else if (indexOfX === winConditions.winSeven) {
-      return 'X Wins!'
-    } else if (indexOfX === winConditions.winEight) {
-      return 'X Wins!'
-    }
-  }
-}
-
-const compareIndexOfOToWins = function () {
-  for (let i = 0; i <= gameBoard.length; i++) {
-    if (indexOfO === winConditions.winOne) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winTwo) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winThree) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winFour) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winFive) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winSix) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winSeven) {
-      return 'O Wins!'
-    } else if (indexOfO === winConditions.winEight) {
-      return 'O Wins!'
-    }
-  }
-}
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
 // problems: 4.1: function has to be a function
 // problems: 4.2 function has to take an element of the gameBoard array as a parameter
@@ -126,10 +79,10 @@ module.exports = {
   gameBoardSquares,
   emptyBoard,
   makeMove,
-  checkIfUndefined,
   currentPlayer,
   switchPlayer,
-  winConditions
+  winConditions,
+  compareBoardPushIndex
 }
 
 // SETTINGS: CHANGE PASSWORD & LOG OUT -- MORE USER STORIES
