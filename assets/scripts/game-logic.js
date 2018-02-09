@@ -1,6 +1,15 @@
 // first attempt at game board creation
 
-let gameBoard = new Array(9).fill('') // DON'T NEST YOUR ARRAYS
+let gameBoard = new Array(9).fill('') // technique from Stack Overflow
+
+const currentPlayer = {
+  token: 'x',
+  checkToken: function () { // this is a this.example from Nate!
+    return this.token
+  }
+}
+// var currentPlayer
+currentPlayer.checkToken()
 
 const gameBoardSquares = function (event) {
   console.log('Im inside gameBoardSquares and gameBoard is', gameBoard)
@@ -9,30 +18,36 @@ const gameBoardSquares = function (event) {
   }
 }
 
-const makeMove = function (index, token) {
-  gameBoard[index] = token
-}
-// makeMove puts a value in an array position
-
 const checkIfUndefined = function (index) {
-  if (gameBoard[index] !== '') {
-    return 'Choose another square'
+  if (gameBoard[index] === '') {
+    return 'this square is fine'
   } else {
-    return 'this one is fine'
+    return 'choose another square'
   }
 }
 
 // function takes an array position and determines whether it has a value of undefined
 // checkIfUndefined(2)
 
+const makeMove = function (index, token) {
+  gameBoard[index] = token
+}
+// makeMove puts a value in an array position
+
+const switchPlayer = function (currentPlayer) { // pass in currentPlayer because the variable needs to be worked on
+  if (currentPlayer.token === 'x') {
+    currentPlayer.token = 'o'
+  } else {
+    currentPlayer.token = 'x'
+  }
+}
+// function switchPlayer
+
 const emptyBoard = function () {
   gameBoard = new Array(9).fill('')
 }
 
 // create emptyBoard function to make gameBoard into an empty array
-
-// var currentPlayer
-// function switchPlayer
 
 // problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
 // problems: 4.1: function has to be a function
@@ -48,7 +63,11 @@ const emptyBoard = function () {
 module.exports = {
   gameBoard,
   gameBoardSquares,
-  emptyBoard
+  emptyBoard,
+  makeMove,
+  checkIfUndefined,
+  currentPlayer,
+  switchPlayer
 }
 
 // SETTINGS: CHANGE PASSWORD & LOG OUT -- MORE USER STORIES
