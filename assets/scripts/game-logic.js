@@ -54,43 +54,42 @@ const compareBoardPushIndex = function (board) {
   }
 }
 
-const checkForNumbers = function () {
+indexOfX.toString()
 
-  }
-}
+indexOfO.toString()
 
 const winConditions = function () {
-  if (indexOfX.includes(0, 1, 2)) {
+  if (indexOfX.includes('0', '1', '2')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(3, 4, 5)) {
+  } else if (indexOfX.includes('3', '4', '5')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(6, 7, 8)) {
+  } else if (indexOfX.includes('6', '7', '8')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(0, 3, 6)) {
+  } else if (indexOfX.includes('0', '3', '6')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(1, 4, 7)) {
+  } else if (indexOfX.includes('1', '4', '7')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(2, 5, 8)) {
+  } else if (indexOfX.includes('2', '5', '8')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(0, 4, 8)) {
+  } else if (indexOfX.includes('0', '4', '8')) {
     return 'X Wins!'
-  } else if (indexOfX.includes(2, 4, 6)) {
+  } else if (indexOfX.includes('2', '4', '6')) {
     return 'X Wins!'
-  } else if (indexOfO.includes(0, 1, 2)) {
+  } else if (indexOfO.includes('0', '1', '2')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(3, 4, 5)) {
+  } else if (indexOfO.includes('3', '4', '5')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(6, 7, 8)) {
+  } else if (indexOfO.includes('6', '7', '8')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(0, 3, 6)) {
+  } else if (indexOfO.includes('0', '3', '6')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(1, 4, 7)) {
+  } else if (indexOfO.includes('1', '4', '7')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(2, 5, 8)) {
+  } else if (indexOfO.includes('2', '5', '8')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(0, 4, 8)) {
+  } else if (indexOfO.includes('0', '4', '8')) {
     return 'O Wins!'
-  } else if (indexOfO.includes(2, 4, 6)) {
+  } else if (indexOfO.includes('2', '4', '6')) {
     return 'O Wins!'
   } else {
     return 'Match Is A DRAW!'
