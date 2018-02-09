@@ -39,16 +39,6 @@ const emptyBoard = function () {
 }
 
 // create emptyBoard function to make gameBoard into an empty array
-const winConditions = {
-  winOne: [0, 1, 2],
-  winTwo: [3, 4, 5],
-  winThree: [6, 7, 8],
-  winFour: [0, 3, 6],
-  winFive: [1, 4, 7],
-  winSix: [2, 5, 8],
-  winSeven: [0, 4, 8],
-  winEight: [6, 4, 2]
-}
 
 const indexOfX = []
 
@@ -64,12 +54,48 @@ const compareBoardPushIndex = function (board) {
   }
 }
 
-// problems: 4: writing a function that assigns a value to an empty space in the array and returns a warning if already assigned
-// problems: 4.1: function has to be a function
-// problems: 4.2 function has to take an element of the gameBoard array as a parameter
-// problems: 4.3: function has to determine if element !=== undefined
-// problems: 4.4: function has to return an alert if element !=== undefined
-// problems: 4.5: function has to prevent makeMove if element !=== undefined
+const checkForNumbers = function () {
+
+  }
+}
+
+const winConditions = function () {
+  if (indexOfX.includes(0, 1, 2)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(3, 4, 5)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(6, 7, 8)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(0, 3, 6)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(1, 4, 7)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(2, 5, 8)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(0, 4, 8)) {
+    return 'X Wins!'
+  } else if (indexOfX.includes(2, 4, 6)) {
+    return 'X Wins!'
+  } else if (indexOfO.includes(0, 1, 2)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(3, 4, 5)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(6, 7, 8)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(0, 3, 6)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(1, 4, 7)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(2, 5, 8)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(0, 4, 8)) {
+    return 'O Wins!'
+  } else if (indexOfO.includes(2, 4, 6)) {
+    return 'O Wins!'
+  } else {
+    return 'Match Is A DRAW!'
+  }
+}
 
 // problems: 6: writing a function that tracks and determines a win condition (three in a row vertical, horizonal, diagonal)
 // WIN CONDITION IS A BOOLEAN
