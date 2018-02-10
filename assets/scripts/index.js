@@ -15,6 +15,9 @@ $(() => {
 // require('./example')
 
 $(() => {
-  console.log('gameBoard is', gameLogic.gameBoard)
-  $('#game-board').on('click', gameLogic.gameBoardSquares)
+  $('#game-board-button').on('click', gameLogic.gameBoardSquares)
 })
+
+$('.box').on('click', function () {
+  $(this).text('X')
+}) // placeholder function for calling game logic work
