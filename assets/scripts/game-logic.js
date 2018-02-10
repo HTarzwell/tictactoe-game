@@ -40,65 +40,31 @@ const emptyBoard = function () {
 
 // create emptyBoard function to make gameBoard into an empty array
 
-const indexOfX = []
-
-const indexOfO = []
-
-const compareBoardPushIndex = function (board) {
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] === 'x') {
-      indexOfX.push(i)
-    } else if (board[i] === 'o') {
-      indexOfO.push(i)
-    }
-  }
-}
-
-indexOfX.toString()
-
-indexOfO.toString()
-
-const winConditions = function () {
-  if (indexOfX.includes('0', '1', '2')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('3', '4', '5')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('6', '7', '8')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('0', '3', '6')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('1', '4', '7')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('2', '5', '8')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('0', '4', '8')) {
-    return 'X Wins!'
-  } else if (indexOfX.includes('2', '4', '6')) {
-    return 'X Wins!'
-  } else if (indexOfO.includes('0', '1', '2')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('3', '4', '5')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('6', '7', '8')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('0', '3', '6')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('1', '4', '7')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('2', '5', '8')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('0', '4', '8')) {
-    return 'O Wins!'
-  } else if (indexOfO.includes('2', '4', '6')) {
-    return 'O Wins!'
+const winCondition = function () {
+  if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2]) {
+    return 'Game Winner!'
+  } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5]) {
+    return 'Game Winner!'
+  } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
+    return 'Game Winner!'
+  } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
+    return 'Game Winner!'
+  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
+    return 'Game Winner!'
+  } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
+    return 'Game Winner!'
+  } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
+    return 'Game Winner!'
+  } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
+    return 'Game Winner!'
   } else {
-    return 'Match Is A DRAW!'
+    return 'Draw Game'
   }
 }
-
 // problems: 6: writing a function that tracks and determines a win condition (three in a row vertical, horizonal, diagonal)
 // WIN CONDITION IS A BOOLEAN
 // export game board
+
 module.exports = {
   gameBoard,
   gameBoardSquares,
@@ -106,8 +72,5 @@ module.exports = {
   makeMove,
   currentPlayer,
   switchPlayer,
-  winConditions,
-  compareBoardPushIndex
+  winCondition
 }
-
-// SETTINGS: CHANGE PASSWORD & LOG OUT -- MORE USER STORIES
