@@ -13,11 +13,20 @@ $(() => {
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+$('.box').each(function () {
+
+})
 
 $(() => {
   $('#game-board-button').on('click', gameLogic.gameBoardSquares)
 })
 
-$('.box').on('click', function () {
-  $(this).text('X')
-}) // placeholder function for calling game logic work
+$('#squarezero').val(gameLogic.gameBoard[0])
+$('#squareone').val(gameLogic.gameBoard[1])
+$('#squaretwo').val(gameLogic.gameBoard[2])
+$('#squarethree').val(gameLogic.gameBoard[3])
+$('#squarefour').val(gameLogic.gameBoard[4])
+$('#squarefive').val(gameLogic.gameBoard[5])
+$('#squaresix').val(gameLogic.gameBoard[6])
+$('#squareseven').val(gameLogic.gameBoard[7])
+$('#squareeight').val(gameLogic.gameBoard[8])
