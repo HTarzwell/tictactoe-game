@@ -1,2 +1,20 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$background-color: #c0d1ed;
+$baby-pink: #edc0e9;
+$mild-pink: #edc0c6;
+$pale-green: #ddf2c6;
+
+body {
+  background-color: $background-color;
+}
+
+.row {
+  height: 100px;
+}
+
+.box {
+  height: inherit;
+  border: 1px solid $baby-pink;
+}
