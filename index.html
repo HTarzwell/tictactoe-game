@@ -12,7 +12,19 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <div id="game-board">
+      <div id="first-form">
+        <p id="message"></p>
+        <form id="sign-up" class="border">
+          <fieldset>
+            <legend>Sign up!</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" value="Sign up!">
+          </fieldset>
+        </form>
+      </div>
+      <div id="game-board" class="mainboard">
         <div id="first-row" class="row">
           <div id="squarezero" class="col-md-4 col-sm-4 col-xs-4 box"></div>
           <div id="squareone" class="col-md-4 col-sm-4 col-xs-4 box"></div>
