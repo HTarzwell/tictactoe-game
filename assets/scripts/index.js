@@ -18,17 +18,12 @@ $(() => {
 let gameBoard = new Array(9).fill('') // #game-board all child elements
 // assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
 
-// push playerToken to the gameBoard index? Use splice!
-
 $('#squarezero').on('click', function () {
-  if (event.currentTarget === '') {
   $('#squarezero').text(gameOn.playerToken)
   const spaceZero = $('#squarezero').text()
   gameBoard.splice(0, 1, spaceZero)
   console.log(gameBoard)
-  } else {
-    alert('Please choose another square!')
-  }
+  return gameOn.winCondition()
 })
 
 $('#squareone').on('click', function () {
@@ -36,6 +31,7 @@ $('#squareone').on('click', function () {
   const spaceOne = $('#squareone').text()
   gameBoard.splice(1, 1, spaceOne)
   console.log(gameBoard)
+  return gameOn.winCondition()
 })
 
 $('#squaretwo').on('click', function () {
@@ -43,6 +39,7 @@ $('#squaretwo').on('click', function () {
   const spaceTwo = $('#squaretwo').text()
   gameBoard.splice(2, 1, spaceTwo)
   console.log(gameBoard)
+  return gameOn.winCondition()
 })
 
 $('#squarethree').on('click', function () {
@@ -89,15 +86,9 @@ $('#squareeight').on('click', function () {
 
 const gameOn = {
   playerToken: 'x',
-  gameBoardSquares: function (event) {
-    console.log('Im inside gameBoardSquares and gameBoard is', gameBoard)
-    for (let i = gameBoard[0]; i <= 9; i++) {
-      console.log(gameBoard[i])
-    }
-  },
-  makeMove: function () {
-    if ($('this') === '') { // note: is this what you want or do you need undefined?
-      $('this') = this.playerToken
+  makeMove: function (index) {
+    if (gameBoard[index] === '') { // note: is this what you want or do you need undefined?
+      gameBoard[index] = this.playerToken
     } else {
       return 'choose another square'
     }
@@ -110,24 +101,24 @@ const gameOn = {
     }
   },
   winCondition: function () {
-    if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2]) {
-      return 'Game Winner!'
+    if (gameBoard.includes([0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '')) {
+      console.log('Game Winner!')
     } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
-      return 'Game Winner!'
+      console.log('Game Winner!')
     } else {
-      return 'Draw Game'
+      console.log('No Winner')
     }
   }
 }
@@ -136,13 +127,14 @@ const gameOn = {
 const emptyBoard = function () {
   gameBoard = new Array(9).fill('')
 }
-
-document.getElementById('#squarezero').addEventListener('click', gameOn.makeMove)
-
 // create emptyBoard function to make gameBoard into an empty array
 
 $('#game-board').ready(function (event) {
-  $('#game-board-button').on('click', gameOn.gameBoardSquares)
+  $('#game-board-button').on('click', emptyBoard())
+})
+
+$('#game-board').ready(function (event) {
+  $('#game-board-button').on('click', gameOn.switchPlayer())
 })
 
 $(() => {

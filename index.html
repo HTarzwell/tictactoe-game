@@ -38,9 +38,17 @@
         <form id="change-password" class="border">
           <fieldset>
             <legend>Change Password</legend>
-            <input type="password" name="credentials[old-password]" placeholder="Old Password">
-            <input type="password" name="credentials[new-password]" placeholder="New Password">
+            <input type="password" name="passwords[old]" placeholder="Old Password">
+            <input type="password" name="passwords[new]" placeholder="New Password">
             <input type="submit" value="Change Password">
+          </fieldset>
+        </form>
+      </div>
+      <div id="fourth-form">
+        <form id="sign-out" class="border">
+          <fieldset>
+            <legend>Sign Out</legend>
+            <input type="submit" value="Sign Out">
           </fieldset>
         </form>
       </div>
@@ -63,6 +71,9 @@
       </div>
       <div id="game-board-button">
         <button type="button" class="btn btn-default">New Game</button>
+      </div>
+      <div id="switch-player-button">
+        <button type="button" class="btn btn-default">Switch Player</button>
       </div>
     </body>
 </html>

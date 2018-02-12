@@ -27,15 +27,24 @@ const signInFailure = function (error) {
   console.log(error)
 }
 
-const changePasswordSuccess = function (data) {
+const changePasswordSuccess = function () {
   $('#message').text('Successfully Changed Password!')
   $('#message').css('background-color', 'green')
-  console.log(data)
-  store.user = data.user
 }
 
 const changePasswordFailure = function (error) {
   $('#message').text('Password Change Unsuccessful')
+  $('#message').css('background-color', 'red')
+  console.log(error)
+}
+
+const signOutSuccess = function () {
+  $('#message').text('Successfully Signed Out')
+  $('#message').css('background-color', 'green')
+}
+
+const signOutFailure = function (error) {
+  $('#message').text('Sign Out Unsuccessful')
   $('#message').css('background-color', 'red')
   console.log(error)
 }
@@ -46,5 +55,7 @@ module.exports = {
   signInSuccess,
   signInFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure
 }
