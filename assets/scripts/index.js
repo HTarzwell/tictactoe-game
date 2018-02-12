@@ -21,10 +21,14 @@ let gameBoard = new Array(9).fill('') // #game-board all child elements
 // push playerToken to the gameBoard index? Use splice!
 
 $('#squarezero').on('click', function () {
+  if (event.currentTarget === '') {
   $('#squarezero').text(gameOn.playerToken)
   const spaceZero = $('#squarezero').text()
   gameBoard.splice(0, 1, spaceZero)
   console.log(gameBoard)
+  } else {
+    alert('Please choose another square!')
+  }
 })
 
 $('#squareone').on('click', function () {
@@ -91,9 +95,9 @@ const gameOn = {
       console.log(gameBoard[i])
     }
   },
-  makeMove: function (index) {
-    if (gameBoard[index] === '') { // note: is this what you want or do you need undefined?
-      gameBoard[index] = this.playerToken
+  makeMove: function () {
+    if ($('this') === '') { // note: is this what you want or do you need undefined?
+      $('this') = this.playerToken
     } else {
       return 'choose another square'
     }
@@ -132,6 +136,8 @@ const gameOn = {
 const emptyBoard = function () {
   gameBoard = new Array(9).fill('')
 }
+
+document.getElementById('#squarezero').addEventListener('click', gameOn.makeMove)
 
 // create emptyBoard function to make gameBoard into an empty array
 

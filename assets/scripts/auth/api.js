@@ -24,7 +24,19 @@ const signIn = function (data) {
   })
 }
 
+const changePassword = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/change-password',
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json'
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  changePassword
 }
