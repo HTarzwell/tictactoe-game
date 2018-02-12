@@ -20,76 +20,100 @@ let gameBoard = new Array(9).fill('') // #game-board all child elements
 
 $('#squarezero').on('click', function () {
   $('#squarezero').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceZero = $('#squarezero').text()
   gameBoard.splice(0, 1, spaceZero)
-  console.log(gameBoard)
-  return gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  gameOn.winCondition()
+  return gameOn.xWins()
 })
 
 $('#squareone').on('click', function () {
   $('#squareone').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceOne = $('#squareone').text()
   gameBoard.splice(1, 1, spaceOne)
-  console.log(gameBoard)
-  return gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  gameOn.winCondition()
+  return gameOn.xWins()
 })
 
 $('#squaretwo').on('click', function () {
   $('#squaretwo').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceTwo = $('#squaretwo').text()
   gameBoard.splice(2, 1, spaceTwo)
-  console.log(gameBoard)
-  return gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  gameOn.winCondition()
+  return gameOn.xWins()
 })
 
 $('#squarethree').on('click', function () {
   $('#squarethree').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceThree = $('#squarethree').text()
   gameBoard.splice(3, 1, spaceThree)
-  console.log(gameBoard)
+  gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  gameOn.xWins()
 })
 
 $('#squarefour').on('click', function () {
   $('#squarefour').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceFour = $('#squarefour').text()
   gameBoard.splice(4, 1, spaceFour)
-  console.log(gameBoard)
+  gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  return gameOn.xWins()
 })
 
 $('#squarefive').on('click', function () {
   $('#squarefive').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceFive = $('#squarefive').text()
   gameBoard.splice(5, 1, spaceFive)
-  console.log(gameBoard)
+  gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  return gameOn.xWins()
 })
 
 $('#squaresix').on('click', function () {
   $('#squaresix').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceSix = $('#squaresix').text()
   gameBoard.splice(6, 1, spaceSix)
-  console.log(gameBoard)
+  gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  return gameOn.xWins()
 })
 
 $('#squareseven').on('click', function () {
   $('#squareseven').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceSeven = $('#squareseven').text()
   gameBoard.splice(7, 1, spaceSeven)
-  console.log(gameBoard)
+  gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  return gameOn.xWins()
 })
 
 $('#squareeight').on('click', function () {
   $('#squareeight').text(gameOn.playerToken)
+  gameOn.switchPlayer()
   const spaceEight = $('#squareeight').text()
   gameBoard.splice(8, 1, spaceEight)
-  console.log(gameBoard)
+  gameOn.winCondition()
+  console.log(gameOn.xSpaces)
+  return gameOn.xWins()
 })
 
 const gameOn = {
-  playerToken: 'x',
-  makeMove: function (index) {
-    if (gameBoard[index] === '') { // note: is this what you want or do you need undefined?
-      gameBoard[index] = this.playerToken
-    } else {
+  playerToken: 'o',
+  xSpaces: [],
+  oSpaces: [],
+  makeMove: function () {
+    if ($(this).text() !== '') {
       return 'choose another square'
     }
   },
@@ -101,24 +125,35 @@ const gameOn = {
     }
   },
   winCondition: function () {
-    if (gameBoard.includes([0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '')) {
-      console.log('Game Winner!')
-    } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5]) {
-      console.log('Game Winner!')
-    } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
-      console.log('Game Winner!')
-    } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
-      console.log('Game Winner!')
-    } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
-      console.log('Game Winner!')
-    } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
-      console.log('Game Winner!')
-    } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
-      console.log('Game Winner!')
-    } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
-      console.log('Game Winner!')
+    for (let i = 0; i < gameBoard.length; i++) {
+      if (gameBoard[i] === 'x') {
+        this.xSpaces.push(i)
+      } else if (gameBoard[i] === 'o') {
+        this.oSpaces.push(i)
+      } else {
+        return i
+      }
+    }
+  },
+  xWins: function () {
+    if (this.xSpaces.includes(0, 1, 2)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(3, 4, 5)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(6, 7, 8)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(0, 3, 6)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(1, 4, 7)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(2, 5, 8)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(0, 4, 8)) {
+      console.log('X Wins!')
+    } else if (this.xSpaces.includes(2, 4, 6)) {
+      console.log('X Wins!')
     } else {
-      console.log('No Winner')
+      console.log('Keep Playing!')
     }
   }
 }
