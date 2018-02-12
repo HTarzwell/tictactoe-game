@@ -16,23 +16,71 @@ $(() => {
 
 // first attempt at game logic
 let gameBoard = new Array(9).fill('') // #game-board all child elements
+// assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
 
-let spaceZero = $('#squarezero')
-let spaceOne = $('#squareone') // assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
-let spaceTwo = $('#squaretwo')
-let spaceThree = $('#squarethree')
-let spaceFour = $('#squarefour')
-let spaceFive = $('#squarefive')
-let spaceSix = $('#squaresix')
-let spaceSeven = $('#squareseven')
-let spaceEight = $('#squareeight')
+// push playerToken to the gameBoard index? Use splice!
 
 $('#squarezero').on('click', function () {
   $('#squarezero').text(gameOn.playerToken)
+  const spaceZero = $('#squarezero').text()
+  gameBoard.splice(0, 1, spaceZero)
+  console.log(gameBoard)
 })
 
 $('#squareone').on('click', function () {
   $('#squareone').text(gameOn.playerToken)
+  const spaceOne = $('#squareone').text()
+  gameBoard.splice(1, 1, spaceOne)
+  console.log(gameBoard)
+})
+
+$('#squaretwo').on('click', function () {
+  $('#squaretwo').text(gameOn.playerToken)
+  const spaceTwo = $('#squaretwo').text()
+  gameBoard.splice(2, 1, spaceTwo)
+  console.log(gameBoard)
+})
+
+$('#squarethree').on('click', function () {
+  $('#squarethree').text(gameOn.playerToken)
+  const spaceThree = $('#squarethree').text()
+  gameBoard.splice(3, 1, spaceThree)
+  console.log(gameBoard)
+})
+
+$('#squarefour').on('click', function () {
+  $('#squarefour').text(gameOn.playerToken)
+  const spaceFour = $('#squarefour').text()
+  gameBoard.splice(4, 1, spaceFour)
+  console.log(gameBoard)
+})
+
+$('#squarefive').on('click', function () {
+  $('#squarefive').text(gameOn.playerToken)
+  const spaceFive = $('#squarefive').text()
+  gameBoard.splice(5, 1, spaceFive)
+  console.log(gameBoard)
+})
+
+$('#squaresix').on('click', function () {
+  $('#squaresix').text(gameOn.playerToken)
+  const spaceSix = $('#squaresix').text()
+  gameBoard.splice(6, 1, spaceSix)
+  console.log(gameBoard)
+})
+
+$('#squareseven').on('click', function () {
+  $('#squareseven').text(gameOn.playerToken)
+  const spaceSeven = $('#squareseven').text()
+  gameBoard.splice(7, 1, spaceSeven)
+  console.log(gameBoard)
+})
+
+$('#squareeight').on('click', function () {
+  $('#squareeight').text(gameOn.playerToken)
+  const spaceEight = $('#squareeight').text()
+  gameBoard.splice(8, 1, spaceEight)
+  console.log(gameBoard)
 })
 
 const gameOn = {
@@ -86,11 +134,8 @@ const emptyBoard = function () {
 }
 
 // create emptyBoard function to make gameBoard into an empty array
-// problems: 6: writing a function that tracks and determines a win condition (three in a row vertical, horizonal, diagonal)
-// WIN CONDITION IS A BOOLEAN
-// export game board
 
-$('#game-board').ready(function () {
+$('#game-board').ready(function (event) {
   $('#game-board-button').on('click', gameOn.gameBoardSquares)
 })
 
