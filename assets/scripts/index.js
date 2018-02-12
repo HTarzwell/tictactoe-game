@@ -2,7 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const gameLogic = require('./game-logic')
+const authEvents = require('./auth/events')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -14,7 +14,135 @@ $(() => {
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
-$(() => {
-  console.log('gameBoard is', gameLogic.gameBoard)
-  $('#game-board').on('click', gameLogic.gameBoardSquares)
+// first attempt at game logic
+let gameBoard = new Array(9).fill('') // #game-board all child elements
+// assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
+
+$('#squarezero').on('click', function () {
+  $('#squarezero').text(gameOn.playerToken)
+  const spaceZero = $('#squarezero').text()
+  gameBoard.splice(0, 1, spaceZero)
+  console.log(gameBoard)
+  return gameOn.winCondition()
 })
+
+$('#squareone').on('click', function () {
+  $('#squareone').text(gameOn.playerToken)
+  const spaceOne = $('#squareone').text()
+  gameBoard.splice(1, 1, spaceOne)
+  console.log(gameBoard)
+  return gameOn.winCondition()
+})
+
+$('#squaretwo').on('click', function () {
+  $('#squaretwo').text(gameOn.playerToken)
+  const spaceTwo = $('#squaretwo').text()
+  gameBoard.splice(2, 1, spaceTwo)
+  console.log(gameBoard)
+  return gameOn.winCondition()
+})
+
+$('#squarethree').on('click', function () {
+  $('#squarethree').text(gameOn.playerToken)
+  const spaceThree = $('#squarethree').text()
+  gameBoard.splice(3, 1, spaceThree)
+  console.log(gameBoard)
+})
+
+$('#squarefour').on('click', function () {
+  $('#squarefour').text(gameOn.playerToken)
+  const spaceFour = $('#squarefour').text()
+  gameBoard.splice(4, 1, spaceFour)
+  console.log(gameBoard)
+})
+
+$('#squarefive').on('click', function () {
+  $('#squarefive').text(gameOn.playerToken)
+  const spaceFive = $('#squarefive').text()
+  gameBoard.splice(5, 1, spaceFive)
+  console.log(gameBoard)
+})
+
+$('#squaresix').on('click', function () {
+  $('#squaresix').text(gameOn.playerToken)
+  const spaceSix = $('#squaresix').text()
+  gameBoard.splice(6, 1, spaceSix)
+  console.log(gameBoard)
+})
+
+$('#squareseven').on('click', function () {
+  $('#squareseven').text(gameOn.playerToken)
+  const spaceSeven = $('#squareseven').text()
+  gameBoard.splice(7, 1, spaceSeven)
+  console.log(gameBoard)
+})
+
+$('#squareeight').on('click', function () {
+  $('#squareeight').text(gameOn.playerToken)
+  const spaceEight = $('#squareeight').text()
+  gameBoard.splice(8, 1, spaceEight)
+  console.log(gameBoard)
+})
+
+const gameOn = {
+  playerToken: 'x',
+  makeMove: function (index) {
+    if (gameBoard[index] === '') { // note: is this what you want or do you need undefined?
+      gameBoard[index] = this.playerToken
+    } else {
+      return 'choose another square'
+    }
+  },
+  switchPlayer: function () {
+    if (this.playerToken === 'x') {
+      this.playerToken = 'o'
+    } else {
+      this.playerToken = 'x'
+    }
+  },
+  winCondition: function () {
+    if (gameBoard.includes([0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '')) {
+      console.log('Game Winner!')
+    } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5]) {
+      console.log('Game Winner!')
+    } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
+      console.log('Game Winner!')
+    } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
+      console.log('Game Winner!')
+    } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
+      console.log('Game Winner!')
+    } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
+      console.log('Game Winner!')
+    } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
+      console.log('Game Winner!')
+    } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
+      console.log('Game Winner!')
+    } else {
+      console.log('No Winner')
+    }
+  }
+}
+// function switchPlayer
+
+const emptyBoard = function () {
+  gameBoard = new Array(9).fill('')
+}
+// create emptyBoard function to make gameBoard into an empty array
+
+$('#game-board').ready(function (event) {
+  $('#game-board-button').on('click', emptyBoard())
+})
+
+$('#game-board').ready(function (event) {
+  $('#game-board-button').on('click', gameOn.switchPlayer())
+})
+
+$(() => {
+  authEvents.addHandlers()
+})
+
+module.exports = {
+  gameBoard,
+  gameOn,
+  emptyBoard
+}
