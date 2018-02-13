@@ -28,12 +28,21 @@ const emptyBoard = function (gameBoard) {
 //
 
 const gameOn = {
+  playerID: 'X',
   playerToken: 'x',
-  switchPlayer: function () {
+  switchToken: function () {
     if (this.playerToken === 'x') {
       this.playerToken = 'o'
     } else {
       this.playerToken = 'x'
+    }
+    this.switchPlayer()
+  },
+  switchPlayer: function () {
+    if (this.playerToken === 'o') {
+      this.playerID = 'X'
+    } else {
+      this.playerID = 'O'
     }
   }
 }
@@ -76,7 +85,7 @@ const endGame = function () {
 // iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
 // }
 const winDeclaration = function () {
-  $('#game-message').text('Game Winner: ')
+  $('#game-message').text('Game Winner: ' + gameOn.playerID)
   $('#game-message').css('background-color', 'green')
 }
 
@@ -147,7 +156,7 @@ $('#squarezero').on('click', function () {
   $('#squarezero').text(gameOn.playerToken)
   const spaceZero = $('#squarezero').text()
   gameBoard.splice(0, 1, spaceZero)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squarezero').off('click')
 })
@@ -156,7 +165,7 @@ $('#squareone').on('click', function () {
   $('#squareone').text(gameOn.playerToken)
   const spaceOne = $('#squareone').text()
   gameBoard.splice(1, 1, spaceOne)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squareone').off('click')
 })
@@ -165,7 +174,7 @@ $('#squaretwo').on('click', function () {
   $('#squaretwo').text(gameOn.playerToken)
   const spaceTwo = $('#squaretwo').text()
   gameBoard.splice(2, 1, spaceTwo)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squaretwo').off('click')
 })
@@ -174,7 +183,7 @@ $('#squarethree').on('click', function () {
   $('#squarethree').text(gameOn.playerToken)
   const spaceThree = $('#squarethree').text()
   gameBoard.splice(3, 1, spaceThree)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squarethree').off('click')
 })
@@ -183,7 +192,7 @@ $('#squarefour').on('click', function () {
   $('#squarefour').text(gameOn.playerToken)
   const spaceFour = $('#squarefour').text()
   gameBoard.splice(4, 1, spaceFour)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squarefour').off('click')
 })
@@ -192,7 +201,7 @@ $('#squarefive').on('click', function () {
   $('#squarefive').text(gameOn.playerToken)
   const spaceFive = $('#squarefive').text()
   gameBoard.splice(5, 1, spaceFive)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squarefive').off('click')
 })
@@ -201,7 +210,7 @@ $('#squaresix').on('click', function () {
   $('#squaresix').text(gameOn.playerToken)
   const spaceSix = $('#squaresix').text()
   gameBoard.splice(6, 1, spaceSix)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squaresix').off('click')
 })
@@ -210,7 +219,7 @@ $('#squareseven').on('click', function () {
   $('#squareseven').text(gameOn.playerToken)
   const spaceSeven = $('#squareseven').text()
   gameBoard.splice(7, 1, spaceSeven)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squareseven').off('click')
 })
@@ -219,7 +228,7 @@ $('#squareeight').on('click', function () {
   $('#squareeight').text(gameOn.playerToken)
   const spaceEight = $('#squareeight').text()
   gameBoard.splice(8, 1, spaceEight)
-  gameOn.switchPlayer()
+  gameOn.switchToken()
   winCondition()
   $('#squareeight').off('click')
 })
