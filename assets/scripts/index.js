@@ -43,50 +43,64 @@ $(document).ready(function () {
 const winner = ['']
 
 $(document).ready(function () {
-  if (winner === 'x') {
+  if (winner[0] === 'x') {
     $('.box').off('click')
-    console.log('Win for ' + winner)
-  } else if (winner === 'o') {
+    console.log('Win for ' + winner[0])
+  } else if (winner[0] === 'o') {
     $('.box').off('click')
-    console.log('Win for ' + winner)
+    console.log('Win for ' + winner[0])
   }
 })
 
 // const occupiedSquares = function () {
 // iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
 // }
+const winDeclaration = function () {
+  $('#game-message').text('Game Winner!')
+  $('#game-message').css('background-color', 'green')
+}
 
+const drawDeclaration = function () {
+  $('#game-message').text('Draw Game - Play Again!')
+  $('#game-message').css('background-color', 'blue')
+}
+
+const onMove = function () {
+  $('#game-message').text('Next move: ' + gameOn.playerToken)
+  $('#game-message').css('background-color', 'grey')
+}
 // check empty array elements: include that in the win condition (9 turns)
 
 const winCondition = function () {
   if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[1])
+    console.log(winner[0])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[4])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[7])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[3])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[4])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[5])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[4])
   } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
-    console.log('Game Winner!')
+    winDeclaration()
     winner.splice(0, 1, gameBoard[4])
   } else if (winner[0] === '' && turn === 8) {
-    console.log('Draw Game')
+    drawDeclaration()
   } else {
-    console.log('Keep Playing!')
+    onMove()
     console.log(gameBoard.length)
     console.log(turn)
   }
