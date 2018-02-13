@@ -20,6 +20,88 @@ let gameBoard = new Array(9).fill('') // #game-board all child elements
 
 // can I make a for loop that would iterate through a string of each div id and do all this??
 // add an array of the div names and iterate through those!
+// Initialization function
+const gameOn = {
+  playerToken: 'x',
+  switchPlayer: function () {
+    if (this.playerToken === 'x') {
+      this.playerToken = 'o'
+    } else {
+      this.playerToken = 'x'
+    }
+  }
+}
+
+let turn = 0
+
+$(document).ready(function () {
+  $('.box').click(function () {
+    turn++
+  })
+})
+
+const winner = ['']
+
+$(document).ready(function () {
+  if (winner === 'x') {
+    $('.box').off('click')
+    console.log('Win for ' + winner)
+  } else if (winner === 'o') {
+    $('.box').off('click')
+    console.log('Win for ' + winner)
+  }
+})
+
+// const occupiedSquares = function () {
+// iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
+// }
+
+// check empty array elements: include that in the win condition (9 turns)
+
+const winCondition = function () {
+  if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[1])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[4])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[7])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[3])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[4])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[5])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[4])
+  } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
+    console.log('Game Winner!')
+    winner.splice(0, 1, gameBoard[4])
+  } else if (winner[0] === '' && turn === 8) {
+    console.log('Draw Game')
+  } else {
+    console.log('Keep Playing!')
+    console.log(gameBoard.length)
+    console.log(turn)
+  }
+}
+
+// Reset function
+const emptyBoard = function () {
+  gameBoard = new Array(9).fill('')
+}
+// create emptyBoard function to make gameBoard into an empty array
+
+$('#game-board-button').on('submit', function () {
+  $('game-board div').empty()
+  emptyBoard()
+})
 
 $('#squarezero').on('click', function () {
   $('#squarezero').text(gameOn.playerToken)
@@ -100,68 +182,6 @@ $('#squareeight').on('click', function () {
   gameOn.switchPlayer()
   winCondition()
   $('#squareeight').off('click')
-})
-
-// Initialization function
-const gameOn = {
-  playerToken: 'x',
-  switchPlayer: function () {
-    if (this.playerToken === 'x') {
-      this.playerToken = 'o'
-    } else {
-      this.playerToken = 'x'
-    }
-  }
-}
-
-let turn = 0
-
-$(document).ready(function () {
-  $('.box').click(function () {
-    turn++
-    console.log(turn)
-  })
-})
-
-// const occupiedSquares = function () {
-// iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
-// }
-
-// check empty array elements: include that in the win condition (9 turns)
-
-const winCondition = function () {
-  if (turn < gameBoard.length && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
-    console.log('Game Winner!')
-  } else if (turn < gameBoard.length && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
-    console.log('Game Winner!')
-  } else if (turn === gameBoard.length) {
-    console.log('Draw Game')
-  } else {
-    console.log('Keep Playing!')
-  }
-}
-// }
-
-// Reset function
-const emptyBoard = function () {
-  gameBoard = new Array(9).fill('')
-}
-// create emptyBoard function to make gameBoard into an empty array
-
-$('#game-board').ready(function (event) {
-  $('#game-board-button').on('click', emptyBoard())
 })
 
 $(() => {
