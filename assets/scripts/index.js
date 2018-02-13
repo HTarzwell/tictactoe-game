@@ -18,11 +18,16 @@ $(() => {
 let gameBoard = new Array(9).fill('') // #game-board all child elements
 // assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
 
+// can I make a for loop that would iterate through a string of each div id and do all this??
+// add an array of the div names and iterate through those!
+
 $('#squarezero').on('click', function () {
   $('#squarezero').text(gameOn.playerToken)
   const spaceZero = $('#squarezero').text()
   gameBoard.splice(0, 1, spaceZero)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squarezero').off('click')
 })
 
 $('#squareone').on('click', function () {
@@ -30,6 +35,8 @@ $('#squareone').on('click', function () {
   const spaceOne = $('#squareone').text()
   gameBoard.splice(1, 1, spaceOne)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squareone').off('click')
 })
 
 $('#squaretwo').on('click', function () {
@@ -37,6 +44,8 @@ $('#squaretwo').on('click', function () {
   const spaceTwo = $('#squaretwo').text()
   gameBoard.splice(2, 1, spaceTwo)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squaretwo').off('click')
 })
 
 $('#squarethree').on('click', function () {
@@ -44,6 +53,8 @@ $('#squarethree').on('click', function () {
   const spaceThree = $('#squarethree').text()
   gameBoard.splice(3, 1, spaceThree)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squarethree').off('click')
 })
 
 $('#squarefour').on('click', function () {
@@ -51,6 +62,8 @@ $('#squarefour').on('click', function () {
   const spaceFour = $('#squarefour').text()
   gameBoard.splice(4, 1, spaceFour)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squarefour').off('click')
 })
 
 $('#squarefive').on('click', function () {
@@ -58,6 +71,8 @@ $('#squarefive').on('click', function () {
   const spaceFive = $('#squarefive').text()
   gameBoard.splice(5, 1, spaceFive)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squarefive').off('click')
 })
 
 $('#squaresix').on('click', function () {
@@ -65,6 +80,8 @@ $('#squaresix').on('click', function () {
   const spaceSix = $('#squaresix').text()
   gameBoard.splice(6, 1, spaceSix)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squaresix').off('click')
 })
 
 $('#squareseven').on('click', function () {
@@ -72,6 +89,8 @@ $('#squareseven').on('click', function () {
   const spaceSeven = $('#squareseven').text()
   gameBoard.splice(7, 1, spaceSeven)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squareseven').off('click')
 })
 
 $('#squareeight').on('click', function () {
@@ -79,8 +98,11 @@ $('#squareeight').on('click', function () {
   const spaceEight = $('#squareeight').text()
   gameBoard.splice(8, 1, spaceEight)
   gameOn.switchPlayer()
+  winCondition()
+  $('#squareeight').off('click')
 })
 
+// Initialization function
 const gameOn = {
   playerToken: 'x',
   switchPlayer: function () {
@@ -92,6 +114,47 @@ const gameOn = {
   }
 }
 
+let turn = 0
+
+$(document).ready(function () {
+  $('.box').click(function () {
+    turn++
+    console.log(turn)
+  })
+})
+
+// const occupiedSquares = function () {
+// iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
+// }
+
+// check empty array elements: include that in the win condition (9 turns)
+
+const winCondition = function () {
+  if (turn < gameBoard.length && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
+    console.log('Game Winner!')
+  } else if (turn < gameBoard.length && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
+    console.log('Game Winner!')
+  } else if (turn === gameBoard.length) {
+    console.log('Draw Game')
+  } else {
+    console.log('Keep Playing!')
+  }
+}
+// }
+
+// Reset function
 const emptyBoard = function () {
   gameBoard = new Array(9).fill('')
 }
