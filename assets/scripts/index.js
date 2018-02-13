@@ -16,11 +16,17 @@ $(() => {
 
 // first attempt at game logic
 let gameBoard = new Array(9).fill('') // #game-board all child elements
+
+const emptyBoard = function (gameBoard) {
+  gameBoard = new Array(9).fill('')
+}
 // assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
 
 // can I make a for loop that would iterate through a string of each div id and do all this??
 // add an array of the div names and iterate through those!
 // Initialization function
+//
+
 const gameOn = {
   playerToken: 'x',
   switchPlayer: function () {
@@ -42,21 +48,35 @@ $(document).ready(function () {
 
 const winner = ['']
 
-$(document).ready(function () {
-  if (winner[0] === 'x') {
-    $('.box').off('click')
-    console.log('Win for ' + winner[0])
-  } else if (winner[0] === 'o') {
-    $('.box').off('click')
-    console.log('Win for ' + winner[0])
+let gameOver = false
+
+const isGameOver = function () {
+  if (winner[0] === 'x' || winner[0] === 'o') {
+    console.log(winner[0])
+    gameOver = true
+    console.log(gameOver)
+  } else if (turn === 8) {
+    gameOver = true
+  } else {
+    gameOver = false
   }
-})
+}
+
+const endGame = function () {
+  if (gameOver === true) {
+    $('.box').off('click')
+  } else {
+    $('.box').on('click', function () {
+      $('#game-message').text('Keep on playing...')
+    })
+  }
+}
 
 // const occupiedSquares = function () {
 // iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
 // }
 const winDeclaration = function () {
-  $('#game-message').text('Game Winner!')
+  $('#game-message').text('Game Winner: ')
   $('#game-message').css('background-color', 'green')
 }
 
@@ -75,47 +95,53 @@ const winCondition = function () {
   if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[1])
-    console.log(winner[0])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[4])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[7])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[3])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[4])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[5])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[4])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
     winDeclaration()
     winner.splice(0, 1, gameBoard[4])
+    isGameOver()
+    endGame()
   } else if (winner[0] === '' && turn === 8) {
     drawDeclaration()
+    isGameOver()
+    endGame()
   } else {
     onMove()
     console.log(gameBoard.length)
     console.log(turn)
   }
 }
-
-// Reset function
-const emptyBoard = function () {
-  gameBoard = new Array(9).fill('')
-}
-// create emptyBoard function to make gameBoard into an empty array
-
-$('#game-board-button').on('submit', function () {
-  $('game-board div').empty()
-  emptyBoard()
-})
 
 $('#squarezero').on('click', function () {
   $('#squarezero').text(gameOn.playerToken)
@@ -196,6 +222,10 @@ $('#squareeight').on('click', function () {
   gameOn.switchPlayer()
   winCondition()
   $('#squareeight').off('click')
+})
+
+$('#reset-button').on('click', function () {
+
 })
 
 $(() => {
