@@ -234,7 +234,8 @@ $('#squareeight').on('click', function () {
 })
 
 $('#reset-button').on('click', function () {
-
+  $('#game-board').load('#game-board')
+  emptyBoard()
 })
 
 $(() => {
