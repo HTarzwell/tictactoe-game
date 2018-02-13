@@ -4,17 +4,11 @@
 
 curl "https://aqueous-atoll-85096.herokuapp.com/games/${ID}" \
   --include \
-  --request PATCH \
+  --request GET \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "game": {
-      "cell": {
-        "index": "'"${INDEX}"'",
-        "value": "'"${VALUE}"'"
-      },
-      "over": "'"${IS_OVER}"'"
-    }
+    "id": "'"${ID}"'"
   }'
 
 echo
