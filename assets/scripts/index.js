@@ -61,9 +61,7 @@ let gameOver = false
 
 const isGameOver = function () {
   if (winner[0] === 'x' || winner[0] === 'o') {
-    console.log(winner[0])
     gameOver = true
-    console.log(gameOver)
   } else if (turn === 8) {
     gameOver = true
   } else {
@@ -147,8 +145,6 @@ const winCondition = function () {
     endGame()
   } else {
     onMove()
-    console.log(gameBoard.length)
-    console.log(turn)
   }
 }
 
