@@ -1,15 +1,15 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-#Project Content
+# Project Content
 
 This is a tic-tac-toe game, build primarily using Javascript, JQuery, and AJAX,
 with some HTML and CSS.  It is hosted on an API local to General Assembly.
 
-#Project Timeline
+# Project Timeline
 
 I began this project on February 7th, 2018.
 
-##Wireframing
+## Wireframing
 
 The project's wireframes can be found at //site//, along with user stories.
 There were some visible differences in the planned wireframe and the end product
@@ -18,7 +18,7 @@ how much time would be needed to complete the game to my satisfaction.  User
 stories were refined multiple times over the course of the project to account for
 developments in the project timeline.
 
-##Game Logic
+## Game Logic
 
 I began work on the project's game logic system on February 8th.  This proved to
 be the most difficult, time-consuming, and (I was initially convinced) unfruitful
@@ -30,13 +30,13 @@ logic worked in Node, this logic did not translate well into working with the pa
 HTML elements, and 2) I had not built in a turn-based player condition to the logic,
 which further hampered progress.
 
-##User APIs
+## User APIs
 
 The user APIs were completed on Monday, February 12th, with only relatively minor
 issues.  I received very solid support in handling these problems and came away with
 an increased understanding of how APIs and curl requests behave.
 
-##Game UX
+## Game UX
 
 Almost all of my game UX and visible game board was constructed from scratch between
 Sunday, February 11th and Tuesday, February 13th.  The majority of my time was consumed
@@ -47,18 +47,18 @@ I was able to submit the project with a marginally function game UI, and discove
 I was able to reconstruct the win condition and add a player-exchange function due to
 many days spent wresting with JavaScript logic.
 
-##Game APIs
+## Game APIs
 
 Game APIs are still an ongoing process.
 
-#Takeaways
+# Takeaways
 
 I learned through this project that there are a number of misconceptions I had about
 how a developer must progress, and also that while frustration in the coding process can
 seem like a setback, it also enhances and promotes learning in a way that few other
 processes in my lifetime have managed.
 
-#Projected End Date
+# Projected End Date
 
 This project must be completed for final submission by February 25th, 2018.  Initial
 submission date was February 14th.
