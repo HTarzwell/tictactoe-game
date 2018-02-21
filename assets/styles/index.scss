@@ -8,18 +8,24 @@ $pale-green: #ddf2c6;
 
 body {
   background-color: $background-color;
+  display: flex;
 }
 
 .mainboard {
-  padding: 50px;
-}
-
-.row {
-  height: 100px;
+  padding: 20px;
+  width: 50%;
 }
 
 .box {
-  height: inherit;
-  border: 1px solid black;
+  width: 30%;
+  padding-bottom: 30%;
+  height: 0;
   cursor: pointer;
+  border: 1px solid green;
 }
+
+.all-forms {
+  width: 50%;
+}
+
+// @ media query the board and form fields!!

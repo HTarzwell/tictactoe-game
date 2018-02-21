@@ -15,11 +15,13 @@ $(() => {
 // require('./example')
 
 // first attempt at game logic
-let gameBoard = new Array(9).fill('') // #game-board all child elements
 
-const emptyBoard = function (gameBoard) {
-  gameBoard = new Array(9).fill('')
-}
+// should I turn EVERYTHING into an object and stick it in with (load)?  Or refactor all code?
+
+// #game-board all child elements
+
+// turn must be 0, winner must be '', gameOver must be false
+
 // assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
 
 // can I make a for loop that would iterate through a string of each div id and do all this??
@@ -28,6 +30,7 @@ const emptyBoard = function (gameBoard) {
 //
 
 const gameOn = {
+  gameBoard: new Array(9).fill(''),
   playerID: 'X',
   playerToken: 'x',
   switchToken: function () {
@@ -50,12 +53,10 @@ const gameOn = {
 let turn = 0
 
 $(document).ready(function () {
-  $('.box').click(function () {
-    turn++
-  })
+  allSquares()
 })
 
-const winner = ['']
+let winner = ['']
 
 let gameOver = false
 
@@ -72,10 +73,11 @@ const isGameOver = function () {
 const endGame = function () {
   if (gameOver === true) {
     $('.box').off('click')
+    console.log(gameOver)
   } else {
-    $('.box').on('click', function () {
-      $('#game-message').text('Keep on playing...')
-    })
+    $('.box').on('click')
+    $('#game-message').text('Player X Ready')
+    $('#game-message').css('background-color', 'blue')
   }
 }
 
@@ -98,45 +100,155 @@ const onMove = function () {
 }
 // check empty array elements: include that in the win condition (9 turns)
 
+const allSquares = function () {
+  $('#squarezero').on('click', function () {
+    $('#squarezero').text(gameOn.playerToken)
+    const spaceZero = $('#squarezero').text()
+    gameOn.gameBoard.splice(0, 1, spaceZero)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squarezero').off('click')
+    turn++
+  })
+
+  $('#squareone').on('click', function () {
+    $('#squareone').text(gameOn.playerToken)
+    const spaceOne = $('#squareone').text()
+    gameOn.gameBoard.splice(1, 1, spaceOne)
+    gameOn.switchToken()
+    console.log(gameOn.gameBoard)
+    winCondition()
+    console.log(turn)
+    $('#squareone').off('click')
+    turn++
+  })
+
+  $('#squaretwo').on('click', function () {
+    $('#squaretwo').text(gameOn.playerToken)
+    const spaceTwo = $('#squaretwo').text()
+    gameOn.gameBoard.splice(2, 1, spaceTwo)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squaretwo').off('click')
+    turn++
+  })
+
+  $('#squarethree').on('click', function () {
+    $('#squarethree').text(gameOn.playerToken)
+    const spaceThree = $('#squarethree').text()
+    gameOn.gameBoard.splice(3, 1, spaceThree)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squarethree').off('click')
+    turn++
+  })
+
+  $('#squarefour').on('click', function () {
+    $('#squarefour').text(gameOn.playerToken)
+    const spaceFour = $('#squarefour').text()
+    gameOn.gameBoard.splice(4, 1, spaceFour)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squarefour').off('click')
+    turn++
+  })
+
+  $('#squarefive').on('click', function () {
+    $('#squarefive').text(gameOn.playerToken)
+    const spaceFive = $('#squarefive').text()
+    gameOn.gameBoard.splice(5, 1, spaceFive)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squarefive').off('click')
+    turn++
+  })
+
+  $('#squaresix').on('click', function () {
+    $('#squaresix').text(gameOn.playerToken)
+    const spaceSix = $('#squaresix').text()
+    gameOn.gameBoard.splice(6, 1, spaceSix)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squaresix').off('click')
+    turn++
+  })
+
+  $('#squareseven').on('click', function () {
+    $('#squareseven').text(gameOn.playerToken)
+    const spaceSeven = $('#squareseven').text()
+    gameOn.gameBoard.splice(7, 1, spaceSeven)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squareseven').off('click')
+    turn++
+  })
+
+  $('#squareeight').on('click', function () {
+    $('#squareeight').text(gameOn.playerToken)
+    const spaceEight = $('#squareeight').text()
+    gameOn.gameBoard.splice(8, 1, spaceEight)
+    gameOn.switchToken()
+    winCondition()
+    console.log(gameOn.gameBoard)
+    console.log(turn)
+    $('#squareeight').off('click')
+    turn++
+  })
+}
+
 const winCondition = function () {
-  if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
+  if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[0] === gameOn.gameBoard[1] && gameOn.gameBoard[1] === gameOn.gameBoard[2] && gameOn.gameBoard[0] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[1])
+    winner.splice(0, 1, gameOn.gameBoard[1])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[3] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[5] && gameOn.gameBoard[3] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[6] === gameOn.gameBoard[7] && gameOn.gameBoard[7] === gameOn.gameBoard[8] && gameOn.gameBoard[6] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[7])
+    winner.splice(0, 1, gameOn.gameBoard[7])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[0] === gameOn.gameBoard[3] && gameOn.gameBoard[3] === gameOn.gameBoard[6] && gameOn.gameBoard[0] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[3])
+    winner.splice(0, 1, gameOn.gameBoard[3])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[1] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[7] && gameOn.gameBoard[1] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[2] === gameOn.gameBoard[5] && gameOn.gameBoard[5] === gameOn.gameBoard[8] && gameOn.gameBoard[2] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[5])
+    winner.splice(0, 1, gameOn.gameBoard[5])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[0] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[8] && gameOn.gameBoard[4] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[2] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[6] && gameOn.gameBoard[4] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
   } else if (winner[0] === '' && turn === 8) {
@@ -148,90 +260,32 @@ const winCondition = function () {
   }
 }
 
-$('#squarezero').on('click', function () {
-  $('#squarezero').text(gameOn.playerToken)
-  const spaceZero = $('#squarezero').text()
-  gameBoard.splice(0, 1, spaceZero)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarezero').off('click')
-})
-
-$('#squareone').on('click', function () {
-  $('#squareone').text(gameOn.playerToken)
-  const spaceOne = $('#squareone').text()
-  gameBoard.splice(1, 1, spaceOne)
-  gameOn.switchToken()
-  winCondition()
-  $('#squareone').off('click')
-})
-
-$('#squaretwo').on('click', function () {
-  $('#squaretwo').text(gameOn.playerToken)
-  const spaceTwo = $('#squaretwo').text()
-  gameBoard.splice(2, 1, spaceTwo)
-  gameOn.switchToken()
-  winCondition()
-  $('#squaretwo').off('click')
-})
-
-$('#squarethree').on('click', function () {
-  $('#squarethree').text(gameOn.playerToken)
-  const spaceThree = $('#squarethree').text()
-  gameBoard.splice(3, 1, spaceThree)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarethree').off('click')
-})
-
-$('#squarefour').on('click', function () {
-  $('#squarefour').text(gameOn.playerToken)
-  const spaceFour = $('#squarefour').text()
-  gameBoard.splice(4, 1, spaceFour)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarefour').off('click')
-})
-
-$('#squarefive').on('click', function () {
-  $('#squarefive').text(gameOn.playerToken)
-  const spaceFive = $('#squarefive').text()
-  gameBoard.splice(5, 1, spaceFive)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarefive').off('click')
-})
-
-$('#squaresix').on('click', function () {
-  $('#squaresix').text(gameOn.playerToken)
-  const spaceSix = $('#squaresix').text()
-  gameBoard.splice(6, 1, spaceSix)
-  gameOn.switchToken()
-  winCondition()
-  $('#squaresix').off('click')
-})
-
-$('#squareseven').on('click', function () {
-  $('#squareseven').text(gameOn.playerToken)
-  const spaceSeven = $('#squareseven').text()
-  gameBoard.splice(7, 1, spaceSeven)
-  gameOn.switchToken()
-  winCondition()
-  $('#squareseven').off('click')
-})
-
-$('#squareeight').on('click', function () {
-  $('#squareeight').text(gameOn.playerToken)
-  const spaceEight = $('#squareeight').text()
-  gameBoard.splice(8, 1, spaceEight)
-  gameOn.switchToken()
-  winCondition()
-  $('#squareeight').off('click')
-})
+const resetBoard = function () {
+  gameOn.gameBoard = new Array(9).fill('')
+  gameOver = false
+  turn = 0
+  winner = new Array(1).fill('')
+  gameOn.playerID = 'X'
+  gameOn.playerToken = 'x'
+  $('#squarezero').text('')
+  $('#squareone').text('')
+  $('#squaretwo').text('')
+  $('#squarethree').text('')
+  $('#squarefour').text('')
+  $('#squarefive').text('')
+  $('#squaresix').text('')
+  $('#squareseven').text('')
+  $('#squareeight').text('')
+  $('#game-message').text('')
+  console.log(winner)
+  console.log(gameOver)
+  console.log(turn)
+  console.log('gameBoard is ', gameOn.gameBoard)
+  allSquares()
+}
 
 $('#reset-button').on('click', function () {
-  $('#game-board').load('#game-board')
-  emptyBoard()
+  resetBoard()
 })
 
 $(() => {
@@ -239,7 +293,6 @@ $(() => {
 })
 
 module.exports = {
-  gameBoard,
   gameOn,
-  emptyBoard
+  resetBoard
 }

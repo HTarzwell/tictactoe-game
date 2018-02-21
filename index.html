@@ -29,11 +29,12 @@
           <div id="squareseven" class="col-md-4 col-sm-4 col-xs-4 box"></div>
           <div id="squareeight" class="col-md-4 col-sm-4 col-xs-4 box"></div>
         </div>
-      </div>
-      <div id="reset-button">
-        <button type="submit" class="btn btn-default">Reset Game</button>
+        <div id="reset-button" class="reset-button">
+          <button type="submit" class="btn btn-default">Reset Game</button>
+        </div>
       </div>
       <br />
+    <div class="all-forms">
       <div id="first-form">
         <p id="message"></p>
         <form id="sign-up" class="border">
@@ -74,5 +75,46 @@
           </fieldset>
         </form>
       </div>
+      <div id="fifth-form">
+        <p id="message"></p>
+        <form id="new-game" class="border">
+          <fieldset>
+            <legend>New Game</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" value="New Game">
+          </fieldset>
+        </form>
+      </div>
+      <div id="sixth-form">
+        <form id="retrieve-game" class="border">
+          <fieldset>
+            <legend>Retrieve Game</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Get Game">
+          </fieldset>
+        </form>
+      </div>
+      <div id="seventh-form">
+        <form id="update-game" class="border">
+          <fieldset>
+            <legend>Update Game</legend>
+            <input type="password" name="passwords[old]" placeholder="Old Password">
+            <input type="password" name="passwords[new]" placeholder="New Password">
+            <input type="submit" value="Update Game">
+          </fieldset>
+        </form>
+      </div>
+      <div id="eighth-form">
+        <form id="show-all-game" class="border">
+          <fieldset>
+            <legend>Show All Games</legend>
+            <input type="submit" value="Show All">
+          </fieldset>
+        </form>
+      </div>
+    </div>
     </body>
 </html>
