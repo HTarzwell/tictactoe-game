@@ -12,8 +12,31 @@ body {
 }
 
 .mainboard {
-  padding: 20px;
   width: 50%;
+}
+
+#squareone {
+  border-left: 1px solid green;
+  border-right: 1px solid green;
+}
+
+#squarethree {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+}
+
+#squarefour {
+  border: 1px solid green;
+}
+
+#squarefive {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+}
+
+#squareseven {
+  border-left: 1px solid green;
+  border-right: 1px solid green;
 }
 
 .box {
@@ -21,7 +44,9 @@ body {
   padding-bottom: 30%;
   height: 0;
   cursor: pointer;
-  border: 1px solid green;
+  font-size: 50px;
+  text-align: center;
+  color: $pale-green;
 }
 
 .all-forms {
