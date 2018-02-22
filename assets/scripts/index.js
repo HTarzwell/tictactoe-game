@@ -8,26 +8,16 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
+$(document).ready(function () {
+  allSquares()
+  $('#fifth-form').hide()
+})
 
-// use require without a reference to ensure a file is bundled
-// require('./example')
+let turn = 0
 
-// first attempt at game logic
+let winner = ['']
 
-// should I turn EVERYTHING into an object and stick it in with (load)?  Or refactor all code?
-
-// #game-board all child elements
-
-// turn must be 0, winner must be '', gameOver must be false
-
-// assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
-
-// can I make a for loop that would iterate through a string of each div id and do all this??
-// add an array of the div names and iterate through those!
-// Initialization function
-//
+let gameOver = false
 
 const gameOn = {
   gameBoard: new Array(9).fill(''),
@@ -50,15 +40,29 @@ const gameOn = {
   }
 }
 
-let turn = 0
-
-$(document).ready(function () {
+const resetBoard = function () {
+  gameOn.gameBoard = new Array(9).fill('')
+  gameOver = false
+  turn = 0
+  winner = new Array(1).fill('')
+  gameOn.playerID = 'X'
+  gameOn.playerToken = 'x'
+  $('#squarezero').text('')
+  $('#squareone').text('')
+  $('#squaretwo').text('')
+  $('#squarethree').text('')
+  $('#squarefour').text('')
+  $('#squarefive').text('')
+  $('#squaresix').text('')
+  $('#squareseven').text('')
+  $('#squareeight').text('')
+  $('#game-message').text('')
+  console.log(winner)
+  console.log(gameOver)
+  console.log(turn)
+  console.log('gameBoard is ', gameOn.gameBoard)
   allSquares()
-})
-
-let winner = ['']
-
-let gameOver = false
+}
 
 const isGameOver = function () {
   if (winner[0] === 'x' || winner[0] === 'o') {
@@ -81,9 +85,6 @@ const endGame = function () {
   }
 }
 
-// const occupiedSquares = function () {
-// iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
-// }
 const winDeclaration = function () {
   $('#game-message').text('Game Winner: ' + gameOn.playerID)
   $('#game-message').css('background-color', 'green')
@@ -98,7 +99,6 @@ const onMove = function () {
   $('#game-message').text('Next move: ' + gameOn.playerToken)
   $('#game-message').css('background-color', 'grey')
 }
-// check empty array elements: include that in the win condition (9 turns)
 
 const allSquares = function () {
   $('#squarezero').on('click', function () {
@@ -260,32 +260,12 @@ const winCondition = function () {
   }
 }
 
-const resetBoard = function () {
-  gameOn.gameBoard = new Array(9).fill('')
-  gameOver = false
-  turn = 0
-  winner = new Array(1).fill('')
-  gameOn.playerID = 'X'
-  gameOn.playerToken = 'x'
-  $('#squarezero').text('')
-  $('#squareone').text('')
-  $('#squaretwo').text('')
-  $('#squarethree').text('')
-  $('#squarefour').text('')
-  $('#squarefive').text('')
-  $('#squaresix').text('')
-  $('#squareseven').text('')
-  $('#squareeight').text('')
-  $('#game-message').text('')
-  console.log(winner)
-  console.log(gameOver)
-  console.log(turn)
-  console.log('gameBoard is ', gameOn.gameBoard)
-  allSquares()
-}
-
 $('#reset-button').on('click', function () {
   resetBoard()
+})
+
+$('#sign-in').on('submit', function () {
+  $('#fifth-form').show()
 })
 
 $(() => {
