@@ -60,6 +60,17 @@ const createGame = function (data) {
   })
 }
 
+const updateGame = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json'
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
