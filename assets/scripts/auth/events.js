@@ -52,13 +52,31 @@ const onCreateGame = function (event) {
     .catch(ui.createGameFailure)
 }
 
+const onUpdateGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this) // THIS is where I need to get stuff from
+  console.log('data is', data)
+  api.updateGame()
+    .then(ui.updateGameSuccess)
+    .then(ui.updateGameFailure)
+  // return value of square, index, and whether game is over: build a FORM
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#create-game').on('submit', onCreateGame)
-
+  $('#squarezero').on('click', onUpdateGame)
+  $('#squareone').on('click', onUpdateGame)
+  $('#squaretwo').on('click', onUpdateGame)
+  $('#squarethree').on('click', onUpdateGame)
+  $('#squarefour').on('click', onUpdateGame)
+  $('#squarefive').on('click', onUpdateGame)
+  $('#squaresix').on('click', onUpdateGame)
+  $('#squareseven').on('click', onUpdateGame)
+  $('#squareeight').on('click', onUpdateGame)
 }
 
 module.exports = {

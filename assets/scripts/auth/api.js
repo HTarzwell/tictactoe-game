@@ -62,7 +62,7 @@ const createGame = function (data) {
 
 const updateGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games',
+    url: config.apiOrigin + '/games/',
     method: 'PATCH',
     headers: {
       contentType: 'application/json'
@@ -76,5 +76,6 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  createGame
+  createGame,
+  updateGame
 }

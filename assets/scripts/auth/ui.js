@@ -61,6 +61,16 @@ const createGameFailure = function (error) {
   console.log(error)
 }
 
+const updateGameSuccess = function (data) {
+  console.log(data)
+}
+
+const updateGameFailure = function (error) {
+  $('#message').text('Something Went Wrong...')
+  $('#message').css('background-color', 'red')
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -71,5 +81,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }
