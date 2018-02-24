@@ -3,6 +3,7 @@
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
+const store = require('../store')
 
 const onSignUp = function (event) {
   event.preventDefault() // prevents page from refreshing!!
@@ -47,16 +48,16 @@ const onCreateGame = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log('data is', data)
-  api.createGame()
+  api.createGame(data)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
 
 const onUpdateGame = function (event) {
   event.preventDefault()
-  const data = getFormFields(this) // THIS is where I need to get stuff from
+  const data = getFormFields(this)
   console.log('data is', data)
-  api.updateGame()
+  api.updateGame(data)
     .then(ui.updateGameSuccess)
     .then(ui.updateGameFailure)
 }
@@ -66,7 +67,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#reset-button').on('click', onCreateGame)
+  $('#new-game').on('submit', onCreateGame)
   $('#squarezero').on('click', onUpdateGame)
   $('#squareone').on('click', onUpdateGame)
   $('#squaretwo').on('click', onUpdateGame)

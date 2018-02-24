@@ -50,9 +50,9 @@ const signOutFailure = function (error) {
 }
 
 const createGameSuccess = function (data) {
-  $('#message').text('New Game On!')
+  $('#message').text('New Game Data Start!')
   $('#message').css('background-color', 'green')
-  console.log(data)
+  console.log('New Game Data is ', data)
 }
 
 const createGameFailure = function (error) {

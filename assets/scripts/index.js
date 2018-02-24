@@ -14,11 +14,8 @@ $(document).ready(function () {
   $('#third-form').hide()
   $('#fourth-form').hide()
   $('#fifth-form').hide()
+  $('#sixth-form').hide()
 })
-
-let index = ''
-
-let value = ''
 
 let turn = 0
 
@@ -249,21 +246,25 @@ const winCondition = function () {
   }
 }
 
-$('#reset-button').on('click', function () {
-  resetBoard()
-})
-
 $('#sign-up').on('submit', function () {
   $('#first-form').hide()
 })
 
 $('#sign-in').on('submit', function () {
+  $('#sixth-form').show()
+})
+
+$('#new-game').on('submit', function () {
   $('#game-board').show()
   $('#second-form').hide()
   $('#first-form').hide()
   $('#third-form').show()
   $('#fourth-form').show()
   $('#fifth-form').show()
+})
+
+$('#new-game').on('submit', function () {
+  resetBoard()
 })
 
 $(() => {
