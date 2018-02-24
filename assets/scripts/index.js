@@ -11,12 +11,14 @@ $(() => {
 $(document).ready(function () {
   allSquares()
   $('#game-board').hide()
-  $('#reset-button').hide()
   $('#third-form').hide()
   $('#fourth-form').hide()
   $('#fifth-form').hide()
-  $('#sixth-form').hide()
 })
+
+let index = ''
+
+let value = ''
 
 let turn = 0
 
@@ -108,12 +110,10 @@ const onMove = function () {
 const allSquares = function () {
   $('#squarezero').on('click', function () {
     $('#squarezero').text(gameOn.playerToken)
-    const spaceZero = $('#squarezero').text()
+    const spaceZero = $('#squarezero').text() // build a function for array index + token
     gameOn.gameBoard.splice(0, 1, spaceZero)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squarezero').off('click')
     turn++
   })
@@ -123,9 +123,7 @@ const allSquares = function () {
     const spaceOne = $('#squareone').text()
     gameOn.gameBoard.splice(1, 1, spaceOne)
     gameOn.switchToken()
-    console.log(gameOn.gameBoard)
     winCondition()
-    console.log(turn)
     $('#squareone').off('click')
     turn++
   })
@@ -136,8 +134,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(2, 1, spaceTwo)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squaretwo').off('click')
     turn++
   })
@@ -148,8 +144,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(3, 1, spaceThree)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squarethree').off('click')
     turn++
   })
@@ -160,8 +154,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(4, 1, spaceFour)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squarefour').off('click')
     turn++
   })
@@ -172,8 +164,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(5, 1, spaceFive)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squarefive').off('click')
     turn++
   })
@@ -184,8 +174,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(6, 1, spaceSix)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squaresix').off('click')
     turn++
   })
@@ -196,8 +184,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(7, 1, spaceSeven)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squareseven').off('click')
     turn++
   })
@@ -208,8 +194,6 @@ const allSquares = function () {
     gameOn.gameBoard.splice(8, 1, spaceEight)
     gameOn.switchToken()
     winCondition()
-    console.log(gameOn.gameBoard)
-    console.log(turn)
     $('#squareeight').off('click')
     turn++
   })
@@ -274,19 +258,12 @@ $('#sign-up').on('submit', function () {
 })
 
 $('#sign-in').on('submit', function () {
-  $('#fifth-form').show()
+  $('#game-board').show()
   $('#second-form').hide()
   $('#first-form').hide()
-})
-
-$('#create-game').on('submit', function () {
-  $('#game-board').show()
   $('#third-form').show()
   $('#fourth-form').show()
-  $('#second-form').hide()
-  $('#fifth-form').hide()
-  $('#sixth-form').show()
-  $('#reset-button').show()
+  $('#fifth-form').show()
 })
 
 $(() => {
