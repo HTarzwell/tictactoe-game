@@ -59,7 +59,6 @@ const onUpdateGame = function (event) {
   api.updateGame()
     .then(ui.updateGameSuccess)
     .then(ui.updateGameFailure)
-  // return value of square, index, and whether game is over: build a FORM
 }
 
 const addHandlers = () => {
@@ -68,6 +67,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#create-game').on('submit', onCreateGame)
+  $('#reset-button').on('submit', onCreateGame)
   $('#squarezero').on('click', onUpdateGame)
   $('#squareone').on('click', onUpdateGame)
   $('#squaretwo').on('click', onUpdateGame)

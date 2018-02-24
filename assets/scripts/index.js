@@ -10,7 +10,12 @@ $(() => {
 
 $(document).ready(function () {
   allSquares()
+  $('#game-board').hide()
+  $('#reset-button').hide()
+  $('#third-form').hide()
+  $('#fourth-form').hide()
   $('#fifth-form').hide()
+  $('#sixth-form').hide()
 })
 
 let turn = 0
@@ -264,8 +269,24 @@ $('#reset-button').on('click', function () {
   resetBoard()
 })
 
+$('#sign-up').on('submit', function () {
+  $('#first-form').hide()
+})
+
 $('#sign-in').on('submit', function () {
   $('#fifth-form').show()
+  $('#second-form').hide()
+  $('#first-form').hide()
+})
+
+$('#create-game').on('submit', function () {
+  $('#game-board').show()
+  $('#third-form').show()
+  $('#fourth-form').show()
+  $('#second-form').hide()
+  $('#fifth-form').hide()
+  $('#sixth-form').show()
+  $('#reset-button').show()
 })
 
 $(() => {
