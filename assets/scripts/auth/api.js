@@ -50,7 +50,7 @@ const signOut = function () {
 
 const createGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games/',
+    url: config.apiOrigin + '/games',
     method: 'POST',
     headers: {
       contentType: 'application/json',
@@ -61,7 +61,9 @@ const createGame = function (data) {
 }
 
 const updateGame = function (data) {
-  console.log('store game is ', store.game)
+  console.log('made it to api updateGame')
+  console.log('data is ', data)
+  console.log('game id is ', store.game.id)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -69,7 +71,15 @@ const updateGame = function (data) {
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: {
+      'game': {
+        'cell': {
+          'index': '',
+          'value': ''
+        },
+        'over': ''
+      }
+    }
   })
 }
 

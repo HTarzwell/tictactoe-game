@@ -112,7 +112,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squarezero').off('click')
+    data.index = 0
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squareone').on('click', function () {
@@ -122,7 +126,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squareone').off('click')
+    data.index = 1
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squaretwo').on('click', function () {
@@ -132,7 +140,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squaretwo').off('click')
+    data.index = 2
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squarethree').on('click', function () {
@@ -142,7 +154,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squarethree').off('click')
+    data.index = 3
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squarefour').on('click', function () {
@@ -152,7 +168,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squarefour').off('click')
+    data.index = 4
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squarefive').on('click', function () {
@@ -162,7 +182,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squarefive').off('click')
+    data.index = 5
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squaresix').on('click', function () {
@@ -172,7 +196,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squaresix').off('click')
+    data.index = 6
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squareseven').on('click', function () {
@@ -182,7 +210,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squareseven').off('click')
+    data.index = 7
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 
   $('#squareeight').on('click', function () {
@@ -192,7 +224,11 @@ const allSquares = function () {
     gameOn.switchToken()
     winCondition()
     $('#squareeight').off('click')
+    data.index = 8
     turn++
+    console.log(data.index)
+    console.log(data.value)
+    console.log(data.over)
   })
 }
 
@@ -246,6 +282,16 @@ const winCondition = function () {
   }
 }
 
+const data = {
+  'game': {
+    'cell': {
+      'index': '',
+      'value': ''
+    },
+    'over': 'false'
+  }
+}
+
 $('#sign-up').on('submit', function () {
   $('#first-form').hide()
 })
@@ -273,5 +319,6 @@ $(() => {
 
 module.exports = {
   gameOn,
-  resetBoard
+  resetBoard,
+  data
 }
