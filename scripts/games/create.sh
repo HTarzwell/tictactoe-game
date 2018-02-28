@@ -9,3 +9,5 @@ curl "https://aqueous-atoll-85096.herokuapp.com/games/" \
   --header "Authorization: Token token=${TOKEN}" \
 
 echo
+
+# {"game":{"id":4525,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":443,"email":"mypants@ga"},"player_o":null}}
