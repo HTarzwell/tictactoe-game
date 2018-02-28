@@ -5,7 +5,6 @@ const store = require('../store')
 const signUpSuccess = function (data) {
   $('#message').text('Sign-Up Successful!')
   $('#message').css('background-color', 'green')
-  console.log(data)
 }
 
 const signUpFailure = function (error) {
@@ -17,7 +16,6 @@ const signUpFailure = function (error) {
 const signInSuccess = function (data) {
   $('#message').text('Successfully Signed In!')
   $('#message').css('background-color', 'green')
-  console.log(data)
   store.user = data.user
 }
 
@@ -49,6 +47,25 @@ const signOutFailure = function (error) {
   console.log(error)
 }
 
+const createGameSuccess = function (data) {
+  $('#message').text('New Game Data Start!')
+  $('#message').css('background-color', 'green')
+  console.log('CreateGame success is here!')
+  store.game = data.game
+}
+
+const createGameFailure = function (error) {
+  $('#message').text('Something Went Wrong...')
+  $('#message').css('background-color', 'red')
+  console.log(error)
+}
+
+const updateGameFailure = function (error) {
+  $('#message').text('Something Went Wrong...')
+  $('#message').css('background-color', 'red')
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -57,5 +74,8 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  createGameSuccess,
+  createGameFailure,
+  updateGameFailure
 }

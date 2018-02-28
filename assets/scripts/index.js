@@ -8,56 +8,72 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
+$(document).ready(function () {
+  allSquares()
+  $('#game-board').hide()
+  $('#third-form').hide()
+  $('#fourth-form').hide()
+  $('#fifth-form').hide()
+  $('#sixth-form').hide()
+})
 
-// use require without a reference to ensure a file is bundled
-// require('./example')
+let turn = 0
 
-// first attempt at game logic
-let gameBoard = new Array(9).fill('') // #game-board all child elements
+let winner = ['']
 
-const emptyBoard = function (gameBoard) {
-  gameBoard = new Array(9).fill('')
-}
-// assign variable to DOM id, .text() onclick to assign X or O to id, then return and push id value to array
-
-// can I make a for loop that would iterate through a string of each div id and do all this??
-// add an array of the div names and iterate through those!
-// Initialization function
-//
+let gameOver = false
 
 const gameOn = {
-  playerID: 'X',
+  gameBoard: new Array(9).fill(''),
+  player: 1,
   playerToken: 'x',
-  switchToken: function () {
-    if (this.playerToken === 'x') {
-      this.playerToken = 'o'
-    } else {
+  playToken: function () {
+    if (this.player === 1) {
       this.playerToken = 'x'
+      return this.playerToken
+    } else if (this.player === 2) {
+      this.playerToken = 'o'
+      return this.playerToken
     }
-    this.switchPlayer()
   },
   switchPlayer: function () {
-    if (this.playerToken === 'o') {
-      this.playerID = 'X'
-    } else {
-      this.playerID = 'O'
+    if (this.player === 1) {
+      this.player = 2
+    } else if (this.player === 2) {
+      this.player = 1
+    }
+  },
+  checkSwitch: function () {
+    if (this.player === 1 && this.playerToken === 'x') {
+      this.switchPlayer()
+      return this.player
+    } else if (this.player === 2 && this.playerToken === 'o') {
+      this.switchPlayer()
+      return this.player
     }
   }
 }
 
-let turn = 0
-
-$(document).ready(function () {
-  $('.box').click(function () {
-    turn++
-  })
-})
-
-const winner = ['']
-
-let gameOver = false
+const resetBoard = function () {
+  gameOn.gameBoard = new Array(9).fill('')
+  gameOver = false
+  data.game.over = false
+  turn = 0
+  winner = new Array(1).fill('')
+  gameOn.player = 1
+  gameOn.playerToken = 'x'
+  $('#squarezero').text('')
+  $('#squareone').text('')
+  $('#squaretwo').text('')
+  $('#squarethree').text('')
+  $('#squarefour').text('')
+  $('#squarefive').text('')
+  $('#squaresix').text('')
+  $('#squareseven').text('')
+  $('#squareeight').text('')
+  $('#game-message').text('')
+  allSquares()
+}
 
 const isGameOver = function () {
   if (winner[0] === 'x' || winner[0] === 'o') {
@@ -72,18 +88,16 @@ const isGameOver = function () {
 const endGame = function () {
   if (gameOver === true) {
     $('.box').off('click')
+    data.game.over = true
   } else {
-    $('.box').on('click', function () {
-      $('#game-message').text('Keep on playing...')
-    })
+    $('.box').on('click')
+    $('#game-message').text('Player X Ready')
+    $('#game-message').css('background-color', 'blue')
   }
 }
 
-// const occupiedSquares = function () {
-// iterate over gameBoard: draw the game when there are no empty spaces AND no win condition
-// }
 const winDeclaration = function () {
-  $('#game-message').text('Game Winner: ' + gameOn.playerID)
+  $('#game-message').text('Game Winner: Player ' + gameOn.player)
   $('#game-message').css('background-color', 'green')
 }
 
@@ -93,50 +107,159 @@ const drawDeclaration = function () {
 }
 
 const onMove = function () {
-  $('#game-message').text('Next move: ' + gameOn.playerToken)
+  $('#game-message').text('Next move')
   $('#game-message').css('background-color', 'grey')
 }
-// check empty array elements: include that in the win condition (9 turns)
+
+const allSquares = function () {
+  $('#squarezero').on('click', function () {
+    gameOn.playToken()
+    $('#squarezero').text(gameOn.playerToken)
+    const spaceZero = $('#squarezero').text() // build a function for array index + token
+    gameOn.gameBoard.splice(0, 1, spaceZero)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squarezero').off('click')
+    data.game.cell.index = 0
+    turn++
+  })
+
+  $('#squareone').on('click', function () {
+    gameOn.playToken()
+    $('#squareone').text(gameOn.playerToken)
+    const spaceOne = $('#squareone').text()
+    gameOn.gameBoard.splice(1, 1, spaceOne)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squareone').off('click')
+    data.game.cell.index = 1
+    turn++
+  })
+
+  $('#squaretwo').on('click', function () {
+    gameOn.playToken()
+    $('#squaretwo').text(gameOn.playerToken)
+    const spaceTwo = $('#squaretwo').text()
+    gameOn.gameBoard.splice(2, 1, spaceTwo)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squaretwo').off('click')
+    data.game.cell.index = 2
+    turn++
+  })
+
+  $('#squarethree').on('click', function () {
+    gameOn.playToken()
+    $('#squarethree').text(gameOn.playerToken)
+    const spaceThree = $('#squarethree').text()
+    gameOn.gameBoard.splice(3, 1, spaceThree)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squarethree').off('click')
+    data.game.cell.index = 3
+    turn++
+  })
+
+  $('#squarefour').on('click', function () {
+    gameOn.playToken()
+    $('#squarefour').text(gameOn.playerToken)
+    const spaceFour = $('#squarefour').text()
+    gameOn.gameBoard.splice(4, 1, spaceFour)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squarefour').off('click')
+    data.game.cell.index = 4
+    turn++
+  })
+
+  $('#squarefive').on('click', function () {
+    gameOn.playToken()
+    $('#squarefive').text(gameOn.playerToken)
+    const spaceFive = $('#squarefive').text()
+    gameOn.gameBoard.splice(5, 1, spaceFive)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squarefive').off('click')
+    data.game.cell.index = 5
+    turn++
+  })
+
+  $('#squaresix').on('click', function () {
+    gameOn.playToken()
+    $('#squaresix').text(gameOn.playerToken)
+    const spaceSix = $('#squaresix').text()
+    gameOn.gameBoard.splice(6, 1, spaceSix)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squaresix').off('click')
+    data.game.cell.index = 6
+    turn++
+  })
+
+  $('#squareseven').on('click', function () {
+    gameOn.playToken()
+    $('#squareseven').text(gameOn.playerToken)
+    const spaceSeven = $('#squareseven').text()
+    gameOn.gameBoard.splice(7, 1, spaceSeven)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squareseven').off('click')
+    data.game.cell.index = 7
+    turn++
+  })
+
+  $('#squareeight').on('click', function () {
+    gameOn.playToken()
+    $('#squareeight').text(gameOn.playerToken)
+    const spaceEight = $('#squareeight').text()
+    gameOn.gameBoard.splice(8, 1, spaceEight)
+    winCondition()
+    gameOn.checkSwitch()
+    $('#squareeight').off('click')
+    data.game.cell.index = 8
+    turn++
+  })
+}
 
 const winCondition = function () {
-  if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
+  if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[0] === gameOn.gameBoard[1] && gameOn.gameBoard[1] === gameOn.gameBoard[2] && gameOn.gameBoard[0] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[1])
+    winner.splice(0, 1, gameOn.gameBoard[1])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[3] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[5] && gameOn.gameBoard[3] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[6] === gameOn.gameBoard[7] && gameOn.gameBoard[7] === gameOn.gameBoard[8] && gameOn.gameBoard[6] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[7])
+    winner.splice(0, 1, gameOn.gameBoard[7])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[0] === gameOn.gameBoard[3] && gameOn.gameBoard[3] === gameOn.gameBoard[6] && gameOn.gameBoard[0] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[3])
+    winner.splice(0, 1, gameOn.gameBoard[3])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[1] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[1] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[7] && gameOn.gameBoard[1] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[2] === gameOn.gameBoard[5] && gameOn.gameBoard[5] === gameOn.gameBoard[8] && gameOn.gameBoard[2] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[5])
+    winner.splice(0, 1, gameOn.gameBoard[5])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[4] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[0] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[8] && gameOn.gameBoard[4] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
-  } else if (winner[0] === '' && turn <= 8 && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[4] !== '') {
+  } else if (winner[0] === '' && turn <= 8 && gameOn.gameBoard[2] === gameOn.gameBoard[4] && gameOn.gameBoard[4] === gameOn.gameBoard[6] && gameOn.gameBoard[4] !== '') {
     winDeclaration()
-    winner.splice(0, 1, gameBoard[4])
+    winner.splice(0, 1, gameOn.gameBoard[4])
     isGameOver()
     endGame()
   } else if (winner[0] === '' && turn === 8) {
@@ -148,90 +271,35 @@ const winCondition = function () {
   }
 }
 
-$('#squarezero').on('click', function () {
-  $('#squarezero').text(gameOn.playerToken)
-  const spaceZero = $('#squarezero').text()
-  gameBoard.splice(0, 1, spaceZero)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarezero').off('click')
+const data = {
+  game: {
+    cell: {
+      index: undefined,
+      value: undefined
+    },
+    over: false
+  }
+}
+
+$('#sign-up').on('submit', function () {
+  $('#first-form').hide()
 })
 
-$('#squareone').on('click', function () {
-  $('#squareone').text(gameOn.playerToken)
-  const spaceOne = $('#squareone').text()
-  gameBoard.splice(1, 1, spaceOne)
-  gameOn.switchToken()
-  winCondition()
-  $('#squareone').off('click')
+$('#sign-in').on('submit', function () {
+  $('#sixth-form').show()
 })
 
-$('#squaretwo').on('click', function () {
-  $('#squaretwo').text(gameOn.playerToken)
-  const spaceTwo = $('#squaretwo').text()
-  gameBoard.splice(2, 1, spaceTwo)
-  gameOn.switchToken()
-  winCondition()
-  $('#squaretwo').off('click')
+$('#new-game').on('submit', function () {
+  $('#game-board').show()
+  $('#second-form').hide()
+  $('#first-form').hide()
+  $('#third-form').show()
+  $('#fourth-form').show()
+  $('#fifth-form').show()
 })
 
-$('#squarethree').on('click', function () {
-  $('#squarethree').text(gameOn.playerToken)
-  const spaceThree = $('#squarethree').text()
-  gameBoard.splice(3, 1, spaceThree)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarethree').off('click')
-})
-
-$('#squarefour').on('click', function () {
-  $('#squarefour').text(gameOn.playerToken)
-  const spaceFour = $('#squarefour').text()
-  gameBoard.splice(4, 1, spaceFour)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarefour').off('click')
-})
-
-$('#squarefive').on('click', function () {
-  $('#squarefive').text(gameOn.playerToken)
-  const spaceFive = $('#squarefive').text()
-  gameBoard.splice(5, 1, spaceFive)
-  gameOn.switchToken()
-  winCondition()
-  $('#squarefive').off('click')
-})
-
-$('#squaresix').on('click', function () {
-  $('#squaresix').text(gameOn.playerToken)
-  const spaceSix = $('#squaresix').text()
-  gameBoard.splice(6, 1, spaceSix)
-  gameOn.switchToken()
-  winCondition()
-  $('#squaresix').off('click')
-})
-
-$('#squareseven').on('click', function () {
-  $('#squareseven').text(gameOn.playerToken)
-  const spaceSeven = $('#squareseven').text()
-  gameBoard.splice(7, 1, spaceSeven)
-  gameOn.switchToken()
-  winCondition()
-  $('#squareseven').off('click')
-})
-
-$('#squareeight').on('click', function () {
-  $('#squareeight').text(gameOn.playerToken)
-  const spaceEight = $('#squareeight').text()
-  gameBoard.splice(8, 1, spaceEight)
-  gameOn.switchToken()
-  winCondition()
-  $('#squareeight').off('click')
-})
-
-$('#reset-button').on('click', function () {
-  $('#game-board').load('#game-board')
-  emptyBoard()
+$('#new-game').on('submit', function () {
+  resetBoard()
 })
 
 $(() => {
@@ -239,7 +307,7 @@ $(() => {
 })
 
 module.exports = {
-  gameBoard,
   gameOn,
-  emptyBoard
+  resetBoard,
+  data
 }

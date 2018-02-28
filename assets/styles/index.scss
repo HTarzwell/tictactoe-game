@@ -8,24 +8,49 @@ $pale-green: #ddf2c6;
 
 body {
   background-color: $background-color;
+  display: flex;
 }
 
 .mainboard {
-  padding: 50px;
+  width: 50%;
 }
 
+#squareone {
+  border-left: 1px solid green;
+  border-right: 1px solid green;
+}
 
-.row {
-  height: 100px;
+#squarethree {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+}
+
+#squarefour {
+  border: 1px solid green;
+}
+
+#squarefive {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+}
+
+#squareseven {
+  border-left: 1px solid green;
+  border-right: 1px solid green;
 }
 
 .box {
-  height: inherit;
-  border: 1px solid black;
+  width: 30%;
+  padding-bottom: 30%;
+  height: 0;
   cursor: pointer;
+  font-size: 50px;
+  text-align: center;
+  color: $pale-green;
 }
 
-#game-board {
+.all-forms {
   width: 50%;
-  height: 50%;
 }
+
+// @ media query the board and form fields!!
