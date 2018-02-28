@@ -25,21 +25,27 @@ let gameOver = false
 
 const gameOn = {
   gameBoard: new Array(9).fill(''),
-  playerID: 'X',
+  player: 1,
   playerToken: 'x',
-  switchToken: function () {
-    if (this.playerToken === 'x') {
-      this.playerToken = 'o'
-    } else {
+  playToken: function () {
+    if (this.player === 1) {
       this.playerToken = 'x'
+    } else if (this.player === 2) {
+      this.playerToken = 'o'
     }
-    this.switchPlayer()
   },
   switchPlayer: function () {
-    if (this.playerToken === 'o') {
-      this.playerID = 'X'
-    } else {
-      this.playerID = 'O'
+    if (this.player === 1) {
+      this.player = 2
+    } else if (this.player === 2) {
+      this.player = 1
+    }
+  },
+  checkSwitch: function () {
+    if (this.player === 1 && this.playerToken === 'x') {
+      this.switchPlayer()
+    } else if (this.player === 2 && this.playerToken === 'o') {
+      this.switchPlayer()
     }
   }
 }
@@ -47,9 +53,10 @@ const gameOn = {
 const resetBoard = function () {
   gameOn.gameBoard = new Array(9).fill('')
   gameOver = false
+  data.game.over = false
   turn = 0
   winner = new Array(1).fill('')
-  gameOn.playerID = 'X'
+  gameOn.player = 1
   gameOn.playerToken = 'x'
   $('#squarezero').text('')
   $('#squareone').text('')
@@ -61,10 +68,6 @@ const resetBoard = function () {
   $('#squareseven').text('')
   $('#squareeight').text('')
   $('#game-message').text('')
-  console.log(winner)
-  console.log(gameOver)
-  console.log(turn)
-  console.log('gameBoard is ', gameOn.gameBoard)
   allSquares()
 }
 
@@ -82,6 +85,8 @@ const endGame = function () {
   if (gameOver === true) {
     $('.box').off('click')
     console.log(gameOver)
+    data.game.over = true
+    console.log('data game over is ', data.game.over)
   } else {
     $('.box').on('click')
     $('#game-message').text('Player X Ready')
@@ -90,7 +95,7 @@ const endGame = function () {
 }
 
 const winDeclaration = function () {
-  $('#game-message').text('Game Winner: ' + gameOn.playerID)
+  $('#game-message').text('Game Winner: Player ' + gameOn.player)
   $('#game-message').css('background-color', 'green')
 }
 
@@ -100,135 +105,135 @@ const drawDeclaration = function () {
 }
 
 const onMove = function () {
-  $('#game-message').text('Next move: ' + gameOn.playerToken)
+  $('#game-message').text('Next move')
   $('#game-message').css('background-color', 'grey')
 }
 
 const allSquares = function () {
   $('#squarezero').on('click', function () {
+    gameOn.playToken()
     $('#squarezero').text(gameOn.playerToken)
     const spaceZero = $('#squarezero').text() // build a function for array index + token
     gameOn.gameBoard.splice(0, 1, spaceZero)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squarezero').off('click')
-    data.index = 0
+    data.game.cell.index = 0
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squareone').on('click', function () {
+    gameOn.playToken()
     $('#squareone').text(gameOn.playerToken)
     const spaceOne = $('#squareone').text()
     gameOn.gameBoard.splice(1, 1, spaceOne)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squareone').off('click')
-    data.index = 1
+    data.game.cell.index = 1
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squaretwo').on('click', function () {
+    gameOn.playToken()
     $('#squaretwo').text(gameOn.playerToken)
     const spaceTwo = $('#squaretwo').text()
     gameOn.gameBoard.splice(2, 1, spaceTwo)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squaretwo').off('click')
-    data.index = 2
+    data.game.cell.index = 2
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squarethree').on('click', function () {
+    gameOn.playToken()
     $('#squarethree').text(gameOn.playerToken)
     const spaceThree = $('#squarethree').text()
     gameOn.gameBoard.splice(3, 1, spaceThree)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squarethree').off('click')
-    data.index = 3
+    data.game.cell.index = 3
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squarefour').on('click', function () {
+    gameOn.playToken()
     $('#squarefour').text(gameOn.playerToken)
     const spaceFour = $('#squarefour').text()
     gameOn.gameBoard.splice(4, 1, spaceFour)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squarefour').off('click')
-    data.index = 4
+    data.game.cell.index = 4
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squarefive').on('click', function () {
+    gameOn.playToken()
     $('#squarefive').text(gameOn.playerToken)
     const spaceFive = $('#squarefive').text()
     gameOn.gameBoard.splice(5, 1, spaceFive)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squarefive').off('click')
-    data.index = 5
+    data.game.cell.index = 5
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squaresix').on('click', function () {
+    gameOn.playToken()
     $('#squaresix').text(gameOn.playerToken)
     const spaceSix = $('#squaresix').text()
     gameOn.gameBoard.splice(6, 1, spaceSix)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squaresix').off('click')
-    data.index = 6
+    data.game.cell.index = 6
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squareseven').on('click', function () {
+    gameOn.playToken()
     $('#squareseven').text(gameOn.playerToken)
     const spaceSeven = $('#squareseven').text()
     gameOn.gameBoard.splice(7, 1, spaceSeven)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squareseven').off('click')
-    data.index = 7
+    data.game.cell.index = 7
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 
   $('#squareeight').on('click', function () {
+    gameOn.playToken()
     $('#squareeight').text(gameOn.playerToken)
     const spaceEight = $('#squareeight').text()
     gameOn.gameBoard.splice(8, 1, spaceEight)
-    gameOn.switchToken()
     winCondition()
+    console.log(gameOn.playerToken)
+    console.log(gameOn.player)
     $('#squareeight').off('click')
-    data.index = 8
+    data.game.cell.index = 8
     turn++
-    console.log(data.index)
-    console.log(data.value)
-    console.log(data.over)
+    gameOn.checkSwitch()
   })
 }
 
@@ -283,12 +288,12 @@ const winCondition = function () {
 }
 
 const data = {
-  'game': {
-    'cell': {
-      'index': '',
-      'value': ''
+  game: {
+    cell: {
+      index: undefined,
+      value: undefined
     },
-    'over': 'false'
+    over: false
   }
 }
 

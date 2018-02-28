@@ -61,7 +61,7 @@ const createGame = function (data) {
 }
 
 const updateGame = function (data) {
-  console.log('made it to api updateGame')
+  console.log('made it to api updateGame') // pr!
   console.log('data is ', data)
   console.log('game id is ', store.game.id)
   return $.ajax({
@@ -71,15 +71,7 @@ const updateGame = function (data) {
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     },
-    data: {
-      'game': {
-        'cell': {
-          'index': '',
-          'value': ''
-        },
-        'over': ''
-      }
-    }
+    data
   })
 }
 
