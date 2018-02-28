@@ -8,7 +8,6 @@ const ui = require('./ui')
 const onSignUp = function (event) {
   event.preventDefault() // prevents page from refreshing!!
   const data = getFormFields(this)
-  console.log('data is', data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -19,7 +18,6 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log('data is', data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -30,7 +28,6 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log('data is', data)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -50,8 +47,6 @@ const onCreateGame = function (event) {
   api.createGame(data)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
-  console.log('made it to events onCreateGame')
-  console.log('data is', data)
 }
 
 /** const onUpdateGame = function (event) {

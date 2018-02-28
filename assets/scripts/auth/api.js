@@ -61,9 +61,6 @@ const createGame = function (data) {
 }
 
 const updateGame = function (data) {
-  console.log('made it to api updateGame') // pr!
-  console.log('data is ', data)
-  console.log('game id is ', store.game.id)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',

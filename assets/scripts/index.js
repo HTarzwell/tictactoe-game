@@ -30,8 +30,10 @@ const gameOn = {
   playToken: function () {
     if (this.player === 1) {
       this.playerToken = 'x'
+      return this.playerToken
     } else if (this.player === 2) {
       this.playerToken = 'o'
+      return this.playerToken
     }
   },
   switchPlayer: function () {
@@ -44,8 +46,10 @@ const gameOn = {
   checkSwitch: function () {
     if (this.player === 1 && this.playerToken === 'x') {
       this.switchPlayer()
+      return this.player
     } else if (this.player === 2 && this.playerToken === 'o') {
       this.switchPlayer()
+      return this.player
     }
   }
 }
@@ -84,9 +88,7 @@ const isGameOver = function () {
 const endGame = function () {
   if (gameOver === true) {
     $('.box').off('click')
-    console.log(gameOver)
     data.game.over = true
-    console.log('data game over is ', data.game.over)
   } else {
     $('.box').on('click')
     $('#game-message').text('Player X Ready')
@@ -116,12 +118,10 @@ const allSquares = function () {
     const spaceZero = $('#squarezero').text() // build a function for array index + token
     gameOn.gameBoard.splice(0, 1, spaceZero)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squarezero').off('click')
     data.game.cell.index = 0
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squareone').on('click', function () {
@@ -130,12 +130,10 @@ const allSquares = function () {
     const spaceOne = $('#squareone').text()
     gameOn.gameBoard.splice(1, 1, spaceOne)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squareone').off('click')
     data.game.cell.index = 1
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squaretwo').on('click', function () {
@@ -144,12 +142,10 @@ const allSquares = function () {
     const spaceTwo = $('#squaretwo').text()
     gameOn.gameBoard.splice(2, 1, spaceTwo)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squaretwo').off('click')
     data.game.cell.index = 2
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squarethree').on('click', function () {
@@ -158,12 +154,10 @@ const allSquares = function () {
     const spaceThree = $('#squarethree').text()
     gameOn.gameBoard.splice(3, 1, spaceThree)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squarethree').off('click')
     data.game.cell.index = 3
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squarefour').on('click', function () {
@@ -172,12 +166,10 @@ const allSquares = function () {
     const spaceFour = $('#squarefour').text()
     gameOn.gameBoard.splice(4, 1, spaceFour)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squarefour').off('click')
     data.game.cell.index = 4
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squarefive').on('click', function () {
@@ -186,12 +178,10 @@ const allSquares = function () {
     const spaceFive = $('#squarefive').text()
     gameOn.gameBoard.splice(5, 1, spaceFive)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squarefive').off('click')
     data.game.cell.index = 5
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squaresix').on('click', function () {
@@ -200,12 +190,10 @@ const allSquares = function () {
     const spaceSix = $('#squaresix').text()
     gameOn.gameBoard.splice(6, 1, spaceSix)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squaresix').off('click')
     data.game.cell.index = 6
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squareseven').on('click', function () {
@@ -214,12 +202,10 @@ const allSquares = function () {
     const spaceSeven = $('#squareseven').text()
     gameOn.gameBoard.splice(7, 1, spaceSeven)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squareseven').off('click')
     data.game.cell.index = 7
     turn++
-    gameOn.checkSwitch()
   })
 
   $('#squareeight').on('click', function () {
@@ -228,12 +214,10 @@ const allSquares = function () {
     const spaceEight = $('#squareeight').text()
     gameOn.gameBoard.splice(8, 1, spaceEight)
     winCondition()
-    console.log(gameOn.playerToken)
-    console.log(gameOn.player)
+    gameOn.checkSwitch()
     $('#squareeight').off('click')
     data.game.cell.index = 8
     turn++
-    gameOn.checkSwitch()
   })
 }
 
