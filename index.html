@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Leni's TicTacToe Game</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <div id="game-board" class="mainboard">
+        <p id="game-message"></p>
+        <div id="first-row" class="row">
+          <div id="squarezero" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+          <div id="squareone" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+          <div id="squaretwo" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+        </div>
+        <div id="second-row" class="row">
+          <div id="squarethree" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+          <div id="squarefour" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+          <div id="squarefive" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+        </div>
+        <div id="third-row" class="row">
+          <div id="squaresix" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+          <div id="squareseven" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+          <div id="squareeight" class="col-md-4 col-sm-4 col-xs-4 box"></div>
+        </div>
+      </div>
+      <br />
+    <div class="all-forms">
+      <div id="first-form">
+        <p id="message"></p>
+        <form id="sign-up" class="border">
+          <fieldset>
+            <legend>Sign up!</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" value="Sign up!">
+          </fieldset>
+        </form>
+      </div>
+      <div id="second-form">
+        <form id="sign-in" class="border">
+          <fieldset>
+            <legend>Sign in!</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Sign in!">
+          </fieldset>
+        </form>
+      </div>
+      <div id="third-form">
+        <form id="change-password" class="border">
+          <fieldset>
+            <legend>Change Password</legend>
+            <input type="password" name="passwords[old]" placeholder="Old Password">
+            <input type="password" name="passwords[new]" placeholder="New Password">
+            <input type="submit" value="Change Password">
+          </fieldset>
+        </form>
+      </div>
+      <div id="fourth-form">
+        <form id="sign-out" class="border">
+          <fieldset>
+            <legend>Sign Out</legend>
+            <input type="submit" value="Sign Out">
+          </fieldset>
+        </form>
+      </div>
+      <div id="fifth-form">
+        <form id="get-games" class="border">
+          <fieldset>
+            <legend>Retrieve Games</legend>
+            <input type="submit" value="Get My Games">
+          </fieldset>
+        </form>
+      </div>
+      <div id="sixth-form">
+        <form id="new-game" class="border">
+          <fieldset>
+            <legend>New Game</legend>
+            <input type="submit" value="New Game">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    </body>
+</html>
